@@ -1,0 +1,44 @@
+.sidebar {
+  h1 {
+    margin-bottom: 0.0rem;
+    color: orange;
+    font-size: 24px;
+  }
+  a {
+    color: $font-color;
+    text-decoration: none;
+    line-height: 30px;
+  }
+  p {
+    color: $font-color;
+    margin: 0;
+    padding: 10px;
+    border-radius: rounded;
+    font-size: 20px;
+  }
+
+  .btn-sidebar {
+    padding: 10px;
+    border-radius: rounded;
+    font-size: 20px;
+    &:hover {
+      background-color: white;
+    }
+  }
+  .footer-sidebar{
+    color: $font-color;
+    position:absolute;
+    bottom:0;
+    h3 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  };
+  ul {
+    li{
+      font-size: 16px;
+      margin: 0.5vh;
+    }
+  }
+  }
+}
