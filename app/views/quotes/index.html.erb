@@ -1,0 +1,21 @@
+<div class="searchbar-postion">
+  <%= simple_form_for :search, url: quotes_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="query" id="search_query" placeholder="Search for a city/model" />
+      <button name="button" type="submit" class="btn searchbar-btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
+</div>
+<% stock = @quotes.first.stock %>
+<h1><%= stock.name %></h1>
+<h1><%= stock.ticker %></h1>
+  <% counter = 1 %>
+
+<ul>
+  <% @quotes.each do |e| %>
+    <li><%= counter %> <%= e.time_stamp %> high: <%= e.high %>$ | low: <%= e.low %>$ open: <%= e.open %>$ | close: <%= e.close %>$</li>
+    <% counter += 1 %>
+  <% end %>
+</ul>

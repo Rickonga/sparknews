@@ -1,1 +1,7 @@
 <h1>Figures tab</h1>
+<h1>Hi there! This figures</h1>
+<ul>
+  <% @stocks.each do |e| %>
+    <li><%= e.name %> | <%= e.ticker %></li>
+  <% end %>
+</ul>
