@@ -3,48 +3,36 @@
     <%= render 'shared/graph' %>
   </div>
   <div class="container-data">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#sparkTweets">Sparktweets</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#sparkFigures">SparkFigures</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#sparkInfo">SparkInfo</a>
-      </li>
-    </ul>
-    <div class="tab-content container-news">
-      <div role="tabpanel" class="tab-pane active container-tweets" id="sparkTweets">
-        <ul class="list-group media-list media-list-stream">
-        <%= render 'shared/tweets' %>
-        </ul>
-      </div>
-      <div role="tabpanel" class="tab-pane fade in container-figures" id="sparkFigures">
-        <ul class="list-group media-list media-list-stream">
-          <%= render 'shared/figures' %>
-        </ul>
-      </div>
-      <div role="tabpanel" class="tab-pane fade in container-info" id="sparkInfo">
-        <ul class="list-group media-list media-list-stream">
-          <%= render 'shared/info' %>
-        </ul>
+    <div class="container-news">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#sparkTweets">Sparktweets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#sparkFigures">SparkFigures</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#sparkInfo">SparkInfo</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active container-tweets" id="sparkTweets">
+          <ul class="list-group media-list media-list-stream">
+            <%= render 'shared/tweets' %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in container-figures" id="sparkFigures">
+          <ul class="list-group media-list media-list-stream">
+            <%= render 'shared/figures' %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in container-info" id="sparkInfo">
+          <ul class="list-group media-list media-list-stream">
+            <%= render 'shared/info' %>
+          </ul>
+        </div>
       </div>
     </div>
-   <!--  <ul class="nav nav-tabs container-news">
-      <li class="nav-item container-tweets">
-        <a class="nav-link active" href="">SparkTweets</a>
-        <%#= render 'shared/tweets' %>
-      </li>
-      <li class="nav-item container-figures">
-        <a class="nav-link">SparkFigures</a>
-        <%#= render 'shared/figures' %>
-      </li>
-      <li class="nav-item container-info">
-        <a class="nav-link">SparkInfo</a>
-        <%#= render 'shared/info' %>
-      </li>
-    </ul> -->
     <div class="container-future">
       <%= render 'shared/future' %>
     </div>

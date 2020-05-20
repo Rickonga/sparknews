@@ -33,17 +33,21 @@
 
 .container-tweets {
   background-color: red;
-  width: 34%;
+  width: 100%;
+}
+
+.nav-tabs {
+  justify-content: space-between;
 }
 
 .container-figures {
   background-color: yellow;
-  width: 33%;
+  width: 100%;
 }
 
 .container-info {
   background-color: green;
-  width: 33%;
+  width: 100%;
 }
 
 .container-future {
