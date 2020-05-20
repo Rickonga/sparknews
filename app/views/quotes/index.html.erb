@@ -8,14 +8,14 @@
     </div>
   <% end %>
 </div>
-
-<h1><%= @stock.name %></h1>
-
-<ul>
+<% stock = @quotes.first.stock %>
+<h1><%= stock.name %></h1>
+<h1><%= stock.ticker %></h1>
   <% counter = 1 %>
 
-  <% @stock.quotes.each do |e| %>
-    <li><%= counter %> <%= e.time_stamp.strftime("%m/%d/%Y") %> high: <%= e.high %>$ | low: <%= e.low %>$ open: <%= e.open %>$ | close: <%= e.close %>$</li>
+<ul>
+  <% @quotes.each do |e| %>
+    <li><%= counter %> <%= e.time_stamp %> high: <%= e.high %>$ | low: <%= e.low %>$ open: <%= e.open %>$ | close: <%= e.close %>$</li>
     <% counter += 1 %>
   <% end %>
 </ul>

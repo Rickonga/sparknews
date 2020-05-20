@@ -5,5 +5,6 @@ class Stock < ApplicationRecord
   has_many :stock_tweets
   has_many :tweets, through: :stock_tweets
 
-  validates :ticker, :name, uniqueness: true
+  validates :ticker, uniqueness: true, presence: true
+  validates :name, presence: true
 end

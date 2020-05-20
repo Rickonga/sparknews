@@ -1,1 +1,6 @@
 <h1>Hi there! This is the index!</h1>
+<ul>
+  <% @stocks.each do |e| %>
+    <li><%= e.name %> | <%= e.ticker %></li>
+  <% end %>
+</ul>

@@ -2,57 +2,34 @@ require "open-uri"
 require "json"
 
 class QuotesController < ApplicationController
+
   def index
-    api_key = "Tpk_000e351e505e48da928ed22d7bb0423e"
-    ticker = params[:query]
-    @stock = use_stock_api(ticker, api_key)
+    #resolution can be [1, 5, 15, 30, 60, D, W, M]
+    #start_time/end_time need to be an integer
+    resolution = 1
+    start_time = 1572651390
+    end_time = 1572910590
+    sql_query = "name ILIKE :query OR ticker ILIKE :query"
+    stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
+
+    ticker = (stock["ticker"] || "aapl").upcase
+    @quotes = policy_scope(use_stock_api(ticker, stock, resolution, start_time, end_time))
   end
 
   private
 
-  def use_stock_api(ticker, api_key)
-    if Stock.exists?(ticker: ticker.upcase)
-      if Stock.find_by(ticker: ticker.upcase).quotes.last.time_stamp.strftime("%m/%d/%Y") == (DateTime.now - 1).strftime("%m/%d/%Y")
-        return Stock.find_by(ticker: ticker.upcase)
-      else
-        update_data_from_stock_api(ticker, api_key)
-      end
-    else
-      get_data_from_stock_api(ticker, api_key)
+  def use_stock_api(ticker, stock, resolution, start_time, end_time)
+    stock.quotes.destroy_all
+    url = "https://finnhub.io/api/v1/stock/candle?symbol=#{ticker}&resolution=#{resolution}&from=#{start_time}&to=#{end_time}&token=br2g2ufrh5rbm8ou31m0"
+    quotes = JSON.parse(open(url).read)
+    quotes["c"].each_with_index do |c, index|
+      stock.quotes.create!(time_stamp: Time.at(quotes["t"][index]),
+                          open: quotes["o"][index],
+                          close: quotes["c"][index],
+                          low: quotes["l"][index],
+                          high: quotes["h"][index],
+                          volume: quotes["v"][index])
     end
-  end
-
-  def get_data_from_stock_api(ticker, api_key)
-    url = "https://sandbox.iexapis.com/stable/stock/#{ticker}/batch?types=quote,chart&range=5y&token=#{api_key}"
-    stocks = JSON.parse(open(url).read)
-    stock = Stock.create!(ticker: stocks["quote"]["symbol"], name: stocks["quote"]["companyName"])
-    stocks["chart"].each do |e|
-      stock.quotes.create(time_stamp: e["date"],
-                          close: e["close"],
-                          open: e["open"],
-                          high: e["high"],
-                          low: e["low"],
-                          volume: e["volume"],
-                          change: e["change"],
-                          change_percent: e["changePercent"])
-    end
-    return stock
-  end
-
-  def update_data_from_stock_api(ticker, api_key)
-    stock = Stock.find_by(ticker: ticker.upcase)
-    url = "https://sandbox.iexapis.com/stable/stock/#{ticker}/batch?types=quote,chart&range=5y&token=#{api_key}"
-    stocks = JSON.parse(open(url).read)
-    stocks["chart"].where("time_stamp > ?", stock.quotes.last.time_stamp).each do |e|
-      stock.quotes.create(time_stamp: e["date"],
-                          close: e["close"],
-                          open: e["open"],
-                          high: e["high"],
-                          low: e["low"],
-                          volume: e["volume"],
-                          change: e["change"],
-                          change_percent: e["changePercent"])
-    end
-    return stock
+    stock.quotes.where("time_stamp BETWEEN ? AND ?", Time.at(start_time), Time.at(end_time))
   end
 end
