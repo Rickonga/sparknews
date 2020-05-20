@@ -15,8 +15,45 @@
 }
 
 .container-graph {
-  height: 250px;
+  height: 30vh;
   position: sticky;
+  background-color: blue;
+}
+
+.container-data {
+  display: flex;
+  background-color: #1D9CEB;
+  height: 70vh;
+}
+
+.container-news {
+  background-color: #1D9CEB;
+  width: 70%;
+}
+
+.container-tweets {
+  background-color: red;
+  width: 100%;
+}
+
+.nav-tabs {
+  justify-content: space-between;
+}
+
+.container-figures {
+  background-color: yellow;
+  width: 100%;
+}
+
+.container-info {
+  background-color: green;
+  width: 100%;
+}
+
+.container-future {
+  background-color: #38CF57;
+  width: 30%;
+  min-width: 150px;
 }
 
 .container-card {

@@ -1,6 +1,40 @@
-<h1>Hi there! This is the index!</h1>
-<ul>
-  <% @stocks.each do |e| %>
-    <li><%= e.name %> | <%= e.ticker %></li>
-  <% end %>
-</ul>
+<div class="main-container">
+  <div class="container-graph">
+    <%= render 'shared/graph' %>
+  </div>
+  <div class="container-data">
+    <div class="container-news">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#sparkTweets">Sparktweets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#sparkFigures">SparkFigures</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#sparkInfo">SparkInfo</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active container-tweets" id="sparkTweets">
+          <ul class="list-group media-list media-list-stream">
+            <%= render 'shared/tweets' %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in container-figures" id="sparkFigures">
+          <ul class="list-group media-list media-list-stream">
+            <%= render 'shared/figures' %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in container-info" id="sparkInfo">
+          <ul class="list-group media-list media-list-stream">
+            <%= render 'shared/info' %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container-future">
+      <%= render 'shared/future' %>
+    </div>
+  </div>
+</div>

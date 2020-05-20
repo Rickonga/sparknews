@@ -13,20 +13,7 @@
     <%= render 'shared/flashes' %>
     <div class="page-wraper">
       <%= render 'shared/sidebar' %>
-      <div class="main-container">
-        <div class="container-graph">
-          <%= render 'shared/graph' %>
-        </div>
-        <div class="container-data">
-          <div class="container-news">
-            <%= render 'shared/news' %>
-          </div>
-          <div class="container-news">
-            <%= render 'shared/future' %>
-          </div>
-        </div>
-         <%= yield %>
-      </div>
+      <%= yield %>
     </div>
     <%= javascript_pack_tag 'application' %>
   </body>
