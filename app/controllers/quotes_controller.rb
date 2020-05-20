@@ -20,7 +20,7 @@ class QuotesController < ApplicationController
 
   def use_stock_api(ticker, stock, resolution, start_time, end_time)
     stock.quotes.destroy_all
-    url = "https://finnhub.io/api/v1/stock/candle?symbol=#{ticker}&resolution=#{resolution}&from=#{start_time}&to=#{end_time}&token=br2g2ufrh5rbm8ou31m0"
+    url = "https://finnhub.io/api/v1/stock/candle?symbol=#{ticker}&resolution=#{resolution}&from=#{start_time}&to=#{end_time}"
     quotes = JSON.parse(open(url).read)
     quotes["c"].each_with_index do |c, index|
       stock.quotes.create!(time_stamp: Time.at(quotes["t"][index]),
