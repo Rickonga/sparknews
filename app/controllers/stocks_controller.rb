@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class StocksController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
@@ -10,6 +12,10 @@ class StocksController < ApplicationController
     ticker = stock.nil? ? "AAPL" : stock["ticker"].upcase
 
     @quotes = policy_scope(use_stock_api(ticker, stock, resolution, start_time, end_time))
+
+    client = set_twitter
+    @posts = []
+    @posts = client.search("#{ticker} -rt", lang: "en").first(50)
   end
 
   def show
@@ -17,6 +23,16 @@ class StocksController < ApplicationController
   end
 
   private
+
+  def set_twitter
+    client = Twitter::REST::Client.new do |config|
+    config.consumer_key        = ENV["CONSUMER_KEY"]
+    config.consumer_secret     = ENV["CONSUMER_SECRET"]
+    config.access_token        = ENV["ACCESS_TOKEN"]
+    config.access_token_secret = ENV["ACCESS_SECRET"]
+    end
+    client
+  end
 
   def use_stock_api(ticker, stock, resolution, start_time, end_time)
     # stock.quotes.destroy_all
