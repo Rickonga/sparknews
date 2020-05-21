@@ -5,8 +5,8 @@
   <p><b>Favourite_count_post: </b><%= post.favorite_count %></p>
   <p><b>Username: </b><%= post.user.name %></p>
   <p><b>Screenname: </b><%= post.user.screen_name %></p>
-  <p><b>Image: </b><img src="<%= post.user.profile_background_image_url %>" width="100%"></p>
   <p><b>#Followers: </b><%= post.user.followers_count %></p>
-  <p><b>Created: </b><%= post.created_at %></p>
+  <p><b>Image: </b><img src="<%= post.user.profile_background_image_url %>" width="100%"></p>
+  <p><i>Created <%= time = (Time.now - post.created_at).round(2) %> seconds ago.</i></p>
   <br>
 <% end %>
