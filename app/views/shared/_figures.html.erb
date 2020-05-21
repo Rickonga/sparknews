@@ -3,7 +3,9 @@
 <%= @quotes.first.stock.name %>
 <%= @quotes.first.stock.ticker %>
 <ul>
+  <% counter = 0 %>
   <% @quotes.each do |e| %>
-    <li> <%= e.time_stamp %> | <%= e.high %> | <%= e.low %></li>
+    <% counter += 1 %>
+    <li><%= counter %> <%= e.time_stamp %> | <%= e.high %> | <%= e.low %> <%= e.resolution %></li>
   <% end %>
 </ul>
