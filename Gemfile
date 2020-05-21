@@ -18,6 +18,8 @@ gem 'webpacker'
 gem 'pundit'
 gem 'acts_as_votable'
 
+gem 'chartkick'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
