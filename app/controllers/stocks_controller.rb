@@ -7,7 +7,8 @@ class StocksController < ApplicationController
     end_time = 1572910590
     sql_query = "name ILIKE :query OR ticker ILIKE :query"
     stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
-    ticker = (stock["ticker"] || "aapl").upcase
+    ticker = stock.nil? ? "AAPL" : stock["ticker"].upcase
+
     @quotes = policy_scope(use_stock_api(ticker, stock, resolution, start_time, end_time))
   end
 

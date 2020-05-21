@@ -1,0 +1,28 @@
+.list-group-item-primary {
+background: orange;
+color: black;
+font-size: 16px;
+overflow-x: scroll;
+display: flex;
+justify-content: space-around;
+align-items: center;
+
+}
+#sub {
+  font-size: 24px;
+  margin-left: 10px;
+}
+.bi-card-checklist {
+  font-size: 20px;
+
+}
+.list-group-item {
+  font-size: 12px;
+}
+.scrollbar {
+  height: 200px;
+  overflow-y: scroll;
+}
+.list-group {
+  width: 220px;
+}
