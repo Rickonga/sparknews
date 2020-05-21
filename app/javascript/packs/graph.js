@@ -10,7 +10,7 @@ let lineChart = new Chart(mychart, {
   data: {
     labels: timeLine,
     datasets: [{
-            label: 'merde',
+            label: 'a title',
             data: myquotes,
             backgroundColor: "rgba(75,192,192,0.4)",
             borderColor: "rgba(75,192,192,1)",
