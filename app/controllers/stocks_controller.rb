@@ -4,24 +4,6 @@ class StocksController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    client = set_twitter
-    #@timeline = client.home_timeline
-    # client.search("#appl -rt", lang: "en")
-    # first.text
-
-    @post = client.search("#amazon -rt", lang: "en").first
-    # @results = []
-    # client.search("#amazon -rt", lang: "en").first do |post|
-    #   @results << post.text
-    # end
-    # topics = ["apple", "amazon"]
-    # results = []
-    # client.filter(track: topics.join(",")) do |object|
-    #   results << object.text if object.is_a?(Twitter::Tweet)
-    # end
-    # @post3 = results
-
-
     resolution = 1
     start_time = 1572651390
     end_time = 1572910590
@@ -29,6 +11,10 @@ class StocksController < ApplicationController
     stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
     ticker = (stock["ticker"] || "aapl").upcase
     @quotes = policy_scope(use_stock_api(ticker, stock, resolution, start_time, end_time))
+
+    client = set_twitter
+    @posts = []
+    @posts = client.search("#{ticker} -rt", lang: "en").first(50)
   end
 
   def show
