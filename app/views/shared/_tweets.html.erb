@@ -1,1 +1,14 @@
 <h1>Tweets tab</h1>
+<!-- <p><%= @timeline %></p> -->
+<p>Tweet about amazon</p>
+<p><b>Text: </b><%= @post.text %></p>
+<p><b>Retweets_count_post: </b><%= @post.retweet_count %></p>
+<p><b>Favourite_count_post: </b><%= @post.favorite_count %></p>
+<p><b>Username: </b><%= @post.user.name %></p>
+<p><b>Screenname: </b><%= @post.user.screen_name %></p>
+<p><b>Image: </b><%= @post.user.profile_background_image_url %></p>
+<p><b>#Followers: </b><%= @post.user.followers_count %></p>
+
+<p><b>Created: </b><%= @post.created_at %></p>
+
+
