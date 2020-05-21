@@ -16,6 +16,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'pundit'
+gem 'acts_as_votable'
+gem 'twitter'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'

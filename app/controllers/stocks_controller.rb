@@ -9,8 +9,14 @@ class StocksController < ApplicationController
     sql_query = "name ILIKE :query OR ticker ILIKE :query"
     stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
     ticker = stock.nil? ? "AAPL" : stock["ticker"].upcase
+
     create_all_Data(stock, ticker, end_time)
     @quotes = policy_scope(stock.quotes.where(resolution: resolution.to_s ))
+
+    client = set_twitter
+    @posts = []
+    @posts = client.search("#{ticker} -rt", lang: "en").first(50)
+
   end
 
   def show
@@ -19,11 +25,22 @@ class StocksController < ApplicationController
 
   private
 
+  def set_twitter
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV["CONSUMER_KEY"]
+      config.consumer_secret     = ENV["CONSUMER_SECRET"]
+      config.access_token        = ENV["ACCESS_TOKEN"]
+      config.access_token_secret = ENV["ACCESS_SECRET"]
+    end
+    client
+  end
+
+
   def create_all_Data(stock, ticker, end_time)
     if stock.quotes.exists?
       check_when_it_was_updated(stock, ticker, end_time)
     else
-      time_span_in_days_back = [5 * 30 * 12, 12 * 30, 6 * 30, 14, 7, 4, 2]
+      time_span_in_days_back = [5 * 30 * 12, 12 * 30, 6 * 30, 14, 7, 4, 1]
       ["M", "W", "D", 60, 30, 15, 1].each_with_index do |resolution, index|
         start_date = (Time.at(end_time).to_date - time_span_in_days_back[index]).to_time.to_i
         quotes = use_stock_api(ticker, resolution, start_date, end_time)
@@ -33,7 +50,7 @@ class StocksController < ApplicationController
   end
 
   def use_stock_api(ticker, resolution, start_time, end_time)
-    url = "https://finnhub.io/api/v1/stock/candle?symbol=#{ticker}&resolution=#{resolution}&from=#{start_time}&to=#{end_time}&token=br2kq1frh5rbm8ou44kg"
+    url = "https://finnhub.io/api/v1/stock/candle?symbol=#{ticker}&resolution=#{resolution}&from=#{start_time}&to=#{end_time}&token=#{ENV["FINNHUB_API_KEY"]}"
     quotes = JSON.parse(open(url).read)
   end
 

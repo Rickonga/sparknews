@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-url = "https://finnhub.io/api/v1/stock/symbol?exchange=US&token=br2kq1frh5rbm8ou44kg"
+url = "https://finnhub.io/api/v1/stock/symbol?exchange=US&token=#{ENV["FINNHUB_API_KEY"]}"
 stocks = JSON.parse(open(url).read)
 stocks.each do |e|
   Stock.create!(name: e["description"], ticker: e["symbol"]) unless e["description"].empty? || e["symbol"].empty?
