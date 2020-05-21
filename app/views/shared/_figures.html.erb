@@ -1,7 +1,9 @@
 <h1>Figures tab</h1>
 <h1>Hi there! This figures</h1>
+<%= @quotes.first.stock.name %>
+<%= @quotes.first.stock.ticker %>
 <ul>
-  <% @stocks.each do |e| %>
-    <li><%= e.name %> | <%= e.ticker %></li>
+  <% @quotes.each do |e| %>
+    <li> <%= e.time_stamp %> | <%= e.high %> | <%= e.low %></li>
   <% end %>
 </ul>
