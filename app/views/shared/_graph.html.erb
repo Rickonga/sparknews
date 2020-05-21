@@ -1,3 +1,10 @@
-<canvas id="stockchart"></canvas>
-<%= javascript_pack_tag 'graph' %>
 
+<% label = [] %>
+<% quote_low = [] %>
+
+<% @quotes.each do |q| %>
+  <% label << q.time_stamp %>
+  <% quote_low << q.low %>
+<% end %>
+
+<p id="lineChart"></p>

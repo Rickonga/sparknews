@@ -19,6 +19,7 @@ gem 'pundit'
 gem 'acts_as_votable'
 
 gem 'chartkick'
+gem 'groupdate'
 
 
 group :development do
