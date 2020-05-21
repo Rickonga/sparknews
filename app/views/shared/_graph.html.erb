@@ -1,11 +1,14 @@
 
-<% label = [] %>
-<% quote_low = [] %>
+<% labels = [] %>
+
+<% quotes_low = [] %>
 
 <% @quotes.each do |q| %>
-  <% label << q.time_stamp %>
-  <% quote_low << q.low %>
+  <% labels << q.time_stamp %>
+  <% quotes_low << q.low %>
 <% end %>
 
-<canvas id="lineChart"></canvas>
+
+<canvas id="lineChart" data-time="<%= labels.to_json %>" data-quotes="<%= quotes_low.to_json %>" aria-label="Hello ARIA World" role="img"></canvas>
 <%= javascript_pack_tag 'graph' %>
+
