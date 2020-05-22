@@ -3,15 +3,16 @@ import Chart from 'chart.js';
 
 let mydata = document.getElementById('lineChart');
 let myquotes = JSON.parse(mydata.dataset.quotes);
+let stockName = JSON.parse(mydata.dataset.stockname);
 const timeLine = JSON.parse(mydata.dataset.time);
 
-const mychart = document.getElementById("lineChart");
+const mychart = document.getElementById("lineChart").getContext("2d");
 let lineChart = new Chart(mychart, {
   type: 'line',
   data: {
     labels: timeLine,
     datasets: [{
-            label: 'a title',
+            label: stockName,
             data: myquotes,
             backgroundColor: "rgba(75,192,192,0.4)",
             borderColor: "rgba(75,192,192,1)",
@@ -31,14 +32,19 @@ let lineChart = new Chart(mychart, {
         }]
     },
     options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
+            scales: {
+              xAxes: [{
+                ticks: {
+                  display: false
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero: false
+                }
+              }]
+            }
           }
-        }]
-      }
-    }
 });
 
 /*

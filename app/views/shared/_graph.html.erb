@@ -1,7 +1,7 @@
 
 <% labels = [] %>
-
 <% quotes_low = [] %>
+<% stock_name = @quotes.first.stock.name %>
 
 <% @quotes.each do |q| %>
   <% labels << q.time_stamp %>
@@ -9,6 +9,6 @@
 <% end %>
 
 
-<canvas id="lineChart" data-time="<%= labels.to_json %>" data-quotes="<%= quotes_low.to_json %>" aria-label="Hello ARIA World" role="img"></canvas>
+<canvas id="lineChart" data-time="<%= labels.to_json %>" data-quotes="<%= quotes_low.to_json %>" data-stockname="<%= stock_name.to_json %>" aria-label="Hello ARIA World" role="img"></canvas>
 <%= javascript_pack_tag 'graph' %>
 
