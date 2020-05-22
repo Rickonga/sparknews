@@ -7,11 +7,11 @@ class StocksController < ApplicationController
     end_time = Time.now.to_i
     resolution = nil || "M"
     sql_query = "name ILIKE :query OR ticker ILIKE :query"
-    stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
-    ticker = stock.nil? ? "AAPL" : stock["ticker"].upcase
+    @stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
+    ticker = @stock.nil? ? "AAPL" : @stock["ticker"].upcase
 
-    create_all_Data(stock, ticker, end_time)
-    @quotes = policy_scope(stock.quotes.where(resolution: resolution.to_s ))
+    create_all_Data(@stock, ticker, end_time)
+    @quotes = policy_scope(@stock.quotes.where(resolution: resolution.to_s ))
 
     client = set_twitter
     @posts = []

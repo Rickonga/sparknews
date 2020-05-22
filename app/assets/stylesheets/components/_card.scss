@@ -1,0 +1,90 @@
+.flexbox {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 2px solid #333;
+  background-color: grey;
+  width: 30%;
+  padding: 45px;
+  margin: 5px;
+}
+
+.tweet-container {
+  display: flex;
+  margin: 15px;
+  border-radius: 5px;
+}
+
+// .product-wrap {
+//   height:300px;
+//   margin:10px;
+//   box-shadow: 10px 10px 5px grey;
+
+// }
+
+.tweet-content {
+  background: white;
+  height: 300px; //#hier ändern
+  width: 80%;
+  transition: 0.2s;
+  overflow-y: scroll;
+  border: 2px solid grey;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.side-rating {
+  background-color: #6981C3;
+  padding: 20px;
+  height: 300px;
+  width: 20%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid grey;
+  border-left: 0px;
+  p {
+    color: black;
+    margin: 0;
+    font-size: 11px;
+  }
+}
+
+
+.bi-caret-up-fill {
+  color: green;
+  font-size: 40px;
+  text-align: center;
+  justify-content: center;
+}
+
+.bi-caret-down-fill {
+  color: red;
+  font-size: 40px;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 100px;
+
+}
+
+.bi-bookmark-plus {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.bi-clock {
+  font-size: 22px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 6px;
+  margin-bottom: 4px;
+}
+
+.time {
+  color: black;
+}
+
+// .EmbeddedTweet-tweet {
+//   padding: 2px 2px 1px !IMPORTANT;
+//   background-color: red !important;
+// }
