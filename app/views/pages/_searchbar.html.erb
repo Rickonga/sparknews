@@ -1,0 +1,10 @@
+<div class="searchbar-postion">
+  <%= simple_form_for :search, url: stocks_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="query" id="search_query" placeholder="Search for a company/ticker" />
+      <button name="button" type="submit" class="btn searchbar-btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
+</div>
