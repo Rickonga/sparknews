@@ -1,4 +1,5 @@
-import Chart from 'chart.js';
+// import Chart from 'chart.js';
+
 
 let mydata = document.getElementById('lineChart');
 let myquotes = JSON.parse(mydata.dataset.quotes);
@@ -93,4 +94,4 @@ var myChart = new Chart(ctx, {
   }
 });
 
-*/
+

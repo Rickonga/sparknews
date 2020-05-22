@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'pundit'
 gem 'acts_as_votable'
+gem 'twitter'
 
 gem 'chartkick'
 gem 'groupdate'
