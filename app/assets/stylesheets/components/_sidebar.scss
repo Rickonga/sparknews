@@ -1,4 +1,5 @@
 .sidebar {
+  height: 100%;
   h1 {
     margin-bottom: 0.0rem;
     color: orange;
@@ -8,6 +9,7 @@
     color: $font-color;
     text-decoration: none;
     line-height: 30px;
+    text-align: center;
   }
   p {
     color: $font-color;
@@ -21,18 +23,16 @@
     padding: 10px;
     border-radius: rounded;
     font-size: 20px;
-    &:hover {
-      background-color: white;
-    }
+    text-align: center;
+
   }
   .footer-sidebar{
     color: $font-color;
-    position:absolute;
-    bottom:0;
     h3 {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
+    padding-bottom: 1px;
   };
   ul {
     li{
@@ -40,5 +40,23 @@
       margin: 0.5vh;
     }
   }
+  }
+}
+.login {
+  margin-bottom: 24px;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+.footer-sidebar {
+  padding-bottom: 10px;
+}
+
+.sidebar-searchbar-btn-flat {
+  i {
+
+  }
+  i:hover {
+    color: orange;
   }
 }

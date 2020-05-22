@@ -1,0 +1,27 @@
+<nav class="fixed-top" id="custom-navbar"=>
+  <ul class="list-group list-group-horizontal d-flex justify-content-between">
+    <li class="nav-item custom-list" id="custom-navbar">
+      <%= link_to stocks_path, class: "d-flex w-100 justify-content-center align-items-center navbar-button" do %>
+        <%= image_tag "logo.png", width: 50, height: 50, class: "mx-2 margin-bottom: 0.0rem" %>
+        <h1 class="mx-2">SparkNews</h1>
+      <% end %>
+    </li>
+    <li class="d-none" id="search-container">
+      <%= render 'navbar_searchbar' %>
+    </li>
+    <li class="custom-list" id="custom-navbar">
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown custom-list">
+          <%= image_tag "user_music.png" , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+        <li class="nav-item custom-list">
+          <%= link_to "Login", new_user_session_path, class: "nav-link navbar-button" %>
+        </li>
+      <% end %>
+    </li>
+  </ul>
+</nav>

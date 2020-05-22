@@ -1,3 +1,5 @@
+<%= link_to "Add to watchlists", stock_watchlists_path(@stock) %>
+
 
 <% labels = [] %>
 <% quotes_low = [] %>
@@ -5,7 +7,7 @@
 
 <% @quotes.each do |q| %>
   <% labels << q.time_stamp %>
-  <% quotes_low << q.low %>
+  <% quotes_low << q.low / 100.0 %>
 <% end %>
 
 

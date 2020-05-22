@@ -1,2 +1,63 @@
 // Specific CSS for your home-page
+.product-name {
+  font-weight: bolder;
+  margin: 4vh;
+  text-align: center;
+  font-size: 10vh;
+  color: rgba(30,30,30,1)
+}
+
+.landing-page-icon {
+  font-size: 8vh;
+  text-align: center;
+  color: $font-color;
+}
+
+.landing-page-card{
+  width: 25vh;
+  margin-bottom: 5vh;
+}
+
+.landing-page-text {
+  text-align: center;
+  color: $font-color;
+  h2 {
+    font-weight: 550;
+  };
+  p {
+    font-size: 20px;
+  }
+}
+
+.custom-container {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.footer {
+  padding: 7vh 10vw;
+  text-align: center;
+  background-color: $font-color;
+  h3 {
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(200,200,200)
+  };
+  ul {
+    li{
+      font-size: 50px;
+      margin: 2vh;
+      color: rgb(200,200,200)
+
+    }
+  }
+}
+
+.subheader {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin: 16px;
+  color: rgba(30,30,30,1);
+}
 
