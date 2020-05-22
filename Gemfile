@@ -19,6 +19,9 @@ gem 'pundit'
 gem 'acts_as_votable'
 gem 'twitter'
 
+gem 'chartkick'
+gem 'groupdate'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
