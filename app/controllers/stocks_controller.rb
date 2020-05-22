@@ -50,7 +50,7 @@ class StocksController < ApplicationController
   end
 
   def use_stock_api(ticker, resolution, start_time, end_time)
-    url = "https://finnhub.io/api/v1/stock/candle?symbol=#{ticker}&resolution=#{resolution}&from=#{start_time}&to=#{end_time}&token=#{ENV["FINNHUB_API_KEY"]}"
+    url = "https://finnhub.io/api/v1/stock/candle?symbol=#{ticker}&resolution=#{resolution}&from=#{start_time}&to=#{end_time}&token=br2kq1frh5rbm8ou44kg"
     quotes = JSON.parse(open(url).read)
   end
 
