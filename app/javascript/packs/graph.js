@@ -1,4 +1,4 @@
-// import Chart from 'chart.js';
+import Chart from 'chart.js';
 
 
 let mydata = document.getElementById('lineChart');
@@ -93,5 +93,5 @@ var myChart = new Chart(ctx, {
       }
   }
 });
-
+*/
 
