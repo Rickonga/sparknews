@@ -1,0 +1,93 @@
+.searchbar-btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.searchbar-btn-ghost:hover {
+  opacity: 1;
+}
+
+.searchbar-btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $sidebar-navbar;
+  transition: background 0.3s ease;
+}
+
+.searchbar-btn-flat:hover {
+  background: #3B508B;
+  color: white;
+}
+
+.searchbar-btn-gradient {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+
+.searchbar-btn-gradient:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+.navbar-searchbar-btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 6px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-searchbar-btn-ghost:hover {
+  opacity: 1;
+}
+
+.navbar-searchbar-btn-flat {
+  color: white;
+  line-height: 12px;
+  padding: 6px 24px;
+  text-align: center;
+  border-radius: 4px;
+  background: $sidebar-navbar;
+  transition: background 0.3s ease;
+}
+
+.navbar-searchbar-btn-flat:hover {
+  background: #3B508B;
+  color: white;
+}
+
+.navbar-searchbar-btn-gradient {
+  color: white;
+  padding: 6px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+
+.navbar-searchbar-btn-gradient:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+
+.navbar-button {
+  background-color: rgba(100,100,100,0.05);
+  border-radius: 10px;
+}
+
+.navbar-button:hover {
+  text-decoration: underline;
+}

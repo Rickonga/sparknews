@@ -7,7 +7,7 @@
 
 <% @quotes.each do |q| %>
   <% labels << q.time_stamp %>
-  <% quotes_low << q.low %>
+  <% quotes_low << q.low / 100.0 %>
 <% end %>
 
 

@@ -1,1 +1,13 @@
 <h1>Info tab</h1>
+<h2><%# link_to @quotes.first.stock.name, @quotes.first.stock.description.weburl %></a></h2>
+<%# image_tag @quotes.first.stock.description.logo %>
+<ul>
+  <li>name: <%#@quotes.first.stock.description.name %></li>
+  <li>Country: <%#@quotes.first.stock.description.country %></li>
+  <li>Industry: <%# @quotes.first.stock.description.finnhubIndustry %></li>
+  <li>Market Capitalization: <%# @quotes.first.stock.description.marketCapitalization %></li>
+  <li>Share Outstanding: <%# @quotes.first.stock.description.shareOutstanding %></li>
+  <li>Phone: <%# @quotes.first.stock.description.phone %></li>
+</ul>
+
+

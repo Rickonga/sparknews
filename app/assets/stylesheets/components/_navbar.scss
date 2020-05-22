@@ -10,3 +10,35 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+#custom-navbar {
+  background-color: transparent;
+  transition: 0.5s background-color ease;
+}
+
+.custom-list {
+  list-style: none;
+  padding: 8px 16px;
+  a {
+    color: rgba(30,30,30,0.7);
+    font-weight:  normal;
+    font-size: 3vh;
+  }
+}
+
+#custom-navbar {
+  h1 {
+    margin-bottom: 0.0rem;
+    color: orange;
+    &:hover{
+      color: grey;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.navbar-white {
+  background: rgba(200,200,200,1) !important;
+}

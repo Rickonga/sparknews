@@ -11,11 +11,11 @@
     <% end %>
   </div>
 
-  <div class="searchbar-postion">
+  <div class="" id="">
     <%= simple_form_for :search, url: stocks_path, method: :get do |f| %>
-      <div class="ml-4 search-form-control form-group d-flex">
+      <div class="ml-4 form-group d-flex">
         <input class="ml-1 form-control string required flex-grow" type="text" name="query" id="search_query" placeholder="Search for a city/model" />
-        <button name="button" type="submit" class="btn searchbar-btn-flat">
+        <button name="button" type="submit" class="btn sidebar-searchbar-btn-flat">
           <i class="fas fa-search"></i>
         </button>
       </div>
