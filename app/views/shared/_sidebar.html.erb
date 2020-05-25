@@ -37,7 +37,14 @@
   <% end %>
   <div class="btn-sidebar d-flex w-100 flex-column align-items-center justify-content-center">
     <div class="my-1">
-      <%= render 'shared/watchlist' %>
+      <% if user_signed_in? %>
+        <%= simple_form_for @watchlist do |w| %>
+        <%= w.input :name %>
+        <%= w.submit "Create new Watchlist"%>
+        <% end %>
+      <% end %>
+
+      <%= render 'shared/watchlist', user_watchlist: @user_watchlists %>
     </div>
     <div>
       <%= render 'shared/bookmarks' %>

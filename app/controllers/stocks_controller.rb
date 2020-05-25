@@ -16,6 +16,13 @@ class StocksController < ApplicationController
     client = set_twitter
     @posts = []
     @posts = client.search("#{@stock.ticker} -rt", lang: "en").first(50)
+    @watchlist = Watchlist.new
+    @user_watchlists = current_user.watchlists
+    @stockwatchlist = StockWatchlist.new
+  end
+
+  def create_stock_watchlist
+
   end
 
   private

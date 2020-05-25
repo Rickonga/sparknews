@@ -9,21 +9,21 @@ class WatchlistsController < ApplicationController
   end
 
   def create
+    @watchlist = Watchlist.create(watchlist_params)
+    @user_watchlist = UserWatchlist.new(watchlist: @watchlist, user: current_user)
     authorize @watchlist
-    @watchlist = Watchlist.new(watchlist_params)
-    @watchlist.user = current_user
 
-    if @watchlist.save
-      redirect_to stocks_path(@stock)
+    if @user_watchlist.save
+      redirect_to stocks_path
     else
-      render :new
+      redirect_to stocks_path
     end
   end
 
   private
 
-  def stock_params
-    params.require(:watchlist).permit(stock_id)
+  def watchlist_params
+    params.require(:watchlist).permit(:name)
   end
 
 end
