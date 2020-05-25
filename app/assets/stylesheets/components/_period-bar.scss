@@ -1,0 +1,25 @@
+#periods {
+  background-color: white;
+  height: 5em;
+  width: 100%;
+}
+
+#timeframe-list {
+  display: inline-table;
+  margin: 0 auto;
+  max-width: 100%;
+
+  li {
+    display: table-cell;
+  }
+
+  a {
+    display: block;
+    padding: 0 1em;
+    text-decoration: none;
+    &:hover {
+      border-bottom: 2px solid black;
+      background-color: yellow;
+    }
+  }
+}

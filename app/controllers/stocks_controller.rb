@@ -5,7 +5,7 @@ class StocksController < ApplicationController
 
   def index
     end_time = Time.now.to_i
-    resolution = nil || "W"
+    resolution = params[:resolution] || "W"
     sql_query = "name ILIKE :query OR ticker ILIKE :query"
     @stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
     if @stock.nil?
