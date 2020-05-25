@@ -17,22 +17,22 @@
 .container-graph {
   height: 30vh;
   position: sticky;
-  background-color: blue;
+  // background-color: blue;
 }
 
 .container-data {
   display: flex;
-  background-color: #1D9CEB;
+  background-color: white;
   height: 70vh;
 }
 
 .container-news {
-  background-color: #1D9CEB;
+  background-color: white;
   width: 70%;
 }
 
 .container-tweets {
-  background-color: #E3E3E3;
+  background-color: white;
   width: 100%;
 }
 
@@ -41,17 +41,17 @@
 }
 
 .container-figures {
-  background-color: yellow;
+  background-color: white;
   width: 100%;
 }
 
 .container-info {
-  background-color: green;
+  background-color: white;
   width: 100%;
 }
 
 .container-future {
-  background-color: #38CF57;
+  background-color: #F0F0F0;
   width: 30%;
   min-width: 150px;
 }

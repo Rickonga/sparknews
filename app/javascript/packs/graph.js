@@ -43,8 +43,10 @@ let lineChart = new Chart(mychart, {
                   beginAtZero: false
                 }
               }]
-            }
-          }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+    }
 });
 
 /*
