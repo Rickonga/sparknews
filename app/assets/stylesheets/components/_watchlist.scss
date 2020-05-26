@@ -1,12 +1,11 @@
 .list-group-item-primary {
-background: orange;
+background: $spark-green;
 color: black;
 font-size: 16px;
 overflow-x: scroll;
 display: flex;
 justify-content: space-around;
 align-items: center;
-width: 200px;
 
 
 
@@ -36,23 +35,21 @@ width: 200px;
 }
 
 .scrollbar {
-  height: 200px;
   overflow-y: scroll;
 }
+
 .accordion {
   li {
     background-color: white;
   }
-  }
+}
+
 .btn-group {
   width: 100%;
-:hover {
-  background-color: #32C94F !important;
-  border-style: none;
-
-
-
-}
+  :hover {
+    background-color: #32C94F !important;
+    border-style: none;
+  }
 }
 .btn-secondary {
   color: white;
