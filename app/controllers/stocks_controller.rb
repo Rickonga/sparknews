@@ -18,10 +18,12 @@ class StocksController < ApplicationController
       resolution_hash = {"M" => 5 * 30 * 12 - 1, "W" => 12 * 30 - 1, "D" => 6 * 30 - 1, "60" => 13, "30" => 6, "15" => 3, "1" => 0}
       a = (last_quote_time_stamp - resolution_hash[resolution])
       @quotes = policy_scope(@stock.quotes.where("resolution = ? AND time_stamp > ?", resolution, a))
-
       client = set_twitter
       @posts = []
       @posts = client.search("#{@stock.ticker} -rt", lang: "en").first(50)
+      @watchlist = Watchlist.new
+      @user_watchlists = current_user.watchlists
+      @stockwatchlist = StockWatchlist.new
     end
   end
 
