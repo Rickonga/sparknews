@@ -3,19 +3,20 @@ require 'open-uri'
 class StocksController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
-  def index
-    end_time = Time.now.to_i
-    resolution = nil || "15"
+ def index
+    # end_time = 1590098400 #Time.now.to_i
+    resolution = nil || "M"
     sql_query = "name ILIKE :query OR ticker ILIKE :query"
+    stock = params[:query].nil? ? Stock.find_by(ticker: "AMZN") : Stock.find_by(sql_query, query: "#{params[:query]}%")
+    ticker = stock.nil? ? "AAPL" : stock["ticker"].upcase
 
-    @stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
-    # @stock.description = use_company_profile_api(stock) if stock.description.nil?
-    create_all_Data(@stock, end_time)
-    @quotes = policy_scope(@stock.quotes.where(resolution: resolution.to_s ))
+    # create_all_Data(stock, ticker, end_time)
+    @quotes = policy_scope(stock.quotes.where(resolution: resolution.to_s ))
 
     client = set_twitter
     @posts = []
-    @posts = client.search("#{@stock.ticker} -rt", lang: "en").first(50)
+    # @posts = client.search("#{ticker} -rt", lang: "en").first(50)
+
   end
 
   private
