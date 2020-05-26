@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :stocks, only: %i[index] do
     resources :watchlists, only: %i[create]
     resources :stock_watchlists, only: %i[create]
+    resources :user_watchlist_stocks, only: %i[create]
   end
   resources :watchlists, only: %i[create]
 
