@@ -24,6 +24,8 @@ class StocksController < ApplicationController
       @watchlist = Watchlist.new
       @user_watchlists = current_user.watchlists
       @stockwatchlist = StockWatchlist.new
+
+      @saved_tweets = SavedTweet.all
     end
   end
 

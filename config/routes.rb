@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :stock_watchlists, only: %i[create]
   end
   resources :watchlists, only: %i[create]
+
+  resources :saved_tweets, only: [:index, :create, :destroy]
 end

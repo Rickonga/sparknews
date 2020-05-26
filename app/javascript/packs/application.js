@@ -6,3 +6,5 @@ require("chartkick")
 require("chart.js")
 
 import "bootstrap";
+
+import "controllers"
