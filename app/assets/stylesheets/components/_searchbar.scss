@@ -1,3 +1,7 @@
+.form-control {
+  border: 1px solid #32C94F !important;
+
+}
 .search-form-control {
   position: relative;
 }
@@ -12,7 +16,6 @@
 .search-form-control .form-control {
   height: 4rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #E7E7E7;
   font-weight: 500;
   font-size: 2rem;
 }
@@ -27,6 +30,7 @@
   width: 80vw;
   max-width: 800px;
   margin: auto auto;
+  margin-top: 25px;
 }
 
 #search-container{

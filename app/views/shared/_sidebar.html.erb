@@ -5,20 +5,10 @@
       <h1 class="mx-2">SparkNews</h1>
     <% end %>
   </div>
-  <div class = "login py-3" >
+  <div class = "sidebar-height">
+  <div class = "login text-left ml-4" >
   <% if !user_signed_in? %>
         <%= link_to "Login", new_user_session_path %>
-    <% end %>
-  </div>
-
-  <div class="" id="">
-    <%= simple_form_for :search, url: stocks_path, method: :get do |f| %>
-      <div class="ml-4 form-group d-flex">
-        <input class="ml-1 form-control string required flex-grow" type="text" name="query" id="search_query" placeholder="Search for a city/model" />
-        <button name="button" type="submit" class="btn sidebar-searchbar-btn-flat">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
     <% end %>
   </div>
   <% if user_signed_in? %>
@@ -32,9 +22,21 @@
       </div>
     </div>
     <div class="btn-sidebar d-flex w-100 my-1 flex-column align-items-center justify-content-center">
-      <%= link_to "Watchlist stocks", "#" %>
+      <%#= link_to "Watchlist stocks", "#" %>
     </div>
   <% end %>
+
+  <div class="" id="search">
+    <%= simple_form_for :search, url: stocks_path, method: :get do |f| %>
+      <div class="ml-4 form-group d-flex">
+        <input class="ml-1 form-control string required flex-grow" type="text" name="query" id="search_query" placeholder="Search for a city/model" />
+        <button name="button" type="submit" class="btn sidebar-searchbar-btn-flat">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    <% end %>
+  </div>
+
   <div class="btn-sidebar d-flex w-100 flex-column align-items-center justify-content-center">
     <div class="my-1">
       <% if user_signed_in? %>
@@ -51,6 +53,7 @@
     </div>
 
   </div>
+</div>
 
   <div class="d-flex w-100 flex-column align-items-center justify-content-center mt-5">
     <div class="footer-sidebar">
