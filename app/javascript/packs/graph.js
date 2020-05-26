@@ -16,24 +16,27 @@ let lineChart = new Chart(chartCanvas, {
     datasets: [{
             label: stockName,
             data: quotes,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
+            backgroundColor: "white",
+            borderColor: "#4688C5",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
-            pointBackgroundColor: "#fff",
+            pointBorderColor: "#4688C5",
+            pointBackgroundColor: "white",
             pointBorderWidth: 1,
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "rgba(75,192,192,1)",
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointHoverBorderWidth: 2,
-            borderWidth: 1,
+            borderWidth: 2,
             pointHitRadius: 10,
         }]
     },
     options: {
+      tooltips: {
+        backgroundColor: "rgba(50, 201, 79, 0.80)",
+      },
             scales: {
               xAxes: [{
                 ticks: {
