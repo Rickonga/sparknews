@@ -1,19 +1,21 @@
+
 import Chart from 'chart.js';
 
 
-let mydata = document.getElementById('lineChart');
-let myquotes = JSON.parse(mydata.dataset.quotes);
-let stockName = JSON.parse(mydata.dataset.stockname);
-const timeLine = JSON.parse(mydata.dataset.time);
+let chartData = document.getElementById('lineChart');
+let quotes = JSON.parse(chartData.dataset.quotes);
+let stockName = JSON.parse(chartData.dataset.stockname);
+const timeLine = JSON.parse(chartData.dataset.time);
+// let timeStart = null;
 
-const mychart = document.getElementById("lineChart").getContext("2d");
-let lineChart = new Chart(mychart, {
+const chartCanvas = document.getElementById("lineChart").getContext("2d");
+let lineChart = new Chart(chartCanvas, {
   type: 'line',
   data: {
     labels: timeLine,
     datasets: [{
             label: stockName,
-            data: myquotes,
+            data: quotes,
             backgroundColor: "rgba(75,192,192,0.4)",
             borderColor: "rgba(75,192,192,1)",
             borderCapStyle: 'butt',
@@ -45,61 +47,27 @@ let lineChart = new Chart(mychart, {
               }]
             },
             responsive: true,
-            maintainAspectRatio: false
-    }
+            maintainAspectRatio: false,
+            // events: ['mousemove', 'click', 'touchmove'],
+            // events: ["click"],
+            hover: {
+              mode: 'nearest'
+            } //,
+            // onClick: function(event, element) {
+            //   var activeElement = element[0];
+            //  var data = activeElement._chart.data;
+            //  var lineIndex = activeElement._index;
+            //  var datasetIndex = activeElement._datasetIndex;
+            //  var datasetLabel = data.datasets[datasetIndex].label;
+            //  var xLabel = data.labels[lineIndex];
+            //  var yLabel = data.datasets[datasetIndex].data[lineIndex];
+
+            // console.log(xLabel);
+            //  timeStart = xLabel;
+            //  }
+          }
 });
 
-/*
 
-var data_from_api = [{ x: 1, y: 2}, {x: 1.5,y: 1}];
-
-var ctx = document.getElementById('lineChart').getContext('2d');
-var myLineChart = new Chart(ctx, {
-   type: 'line',
-   data: [0]
-
-// options: options
-});
-
-
-
-
-var ctx = document.getElementById('lineChart');
-var myChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-      }]
-  },
-  options: {
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero: true
-              }
-          }]
-      }
-  }
-});
-*/
+console.log(lineChart); // UM die Properties herauszulesen.
 
