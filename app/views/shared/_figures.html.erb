@@ -1,11 +1,16 @@
 <h1>Figures tab</h1>
-<h1>Hi there! This figures</h1>
-<%= @quotes.first.stock.name %>
-<%= @quotes.first.stock.ticker %>
+<% high = @quotes.order("low DESC").limit(1).first.low / 100.0 %>
+<% low = @quotes.order("low ASC").limit(1).first.low / 100.0 %>
+<% start_price = @quotes.order("time_stamp ASC").limit(1).first.low / 100.0 %>
+<% end_price =  @quotes.order("time_stamp DESC").limit(1).first.low / 100.0 %>
 <ul>
-  <% counter = 0 %>
-  <% @quotes.each do |e| %>
-    <% counter += 1 %>
-    <li><%= counter %> <%= e.time_stamp %> | <%= e.high %> | <%= e.low %> <%= e.resolution %></li>
-  <% end %>
+  <li>Highest: <%= high.round(2) %>$</li>
+  <li>Lowest: <%= low.round(2) %>$</li>
+  <li>Start: <%= start_price.round(2) %>$</li>
+  <li>End: <%= end_price.round(2) %>$</li>
+  <li>Change form low to high: <%= (high - low).round(2) %>$</li>
+  <li>Change from low to high(%): <%= (high / low).round(2) %>%</li>
+  <li>Change over time: <%= (end_price - start_price).round(2) %>$</li>
+  <li>Change over time(%): <%= (end_price / start_price).round(2) %>%</li>
 </ul>
+
