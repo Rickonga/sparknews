@@ -14,15 +14,17 @@ class SavedTweetsController < ApplicationController
       authorize @tweet
       current_user.saved_tweets.create(tweet: @tweet)
     end
+    redirect_to stocks_path
   end
 
   def destroy
-    if params[:id].nil?
-      saved_tweet = @tweet
-    else
+    if params[:id]
       saved_tweet = SavedTweet.find(params[:id]).tweet
+    else
+      saved_tweet = @tweet
     end
     authorize saved_tweet
     saved_tweet.destroy
+    redirect_to stocks_path if params[:id]
   end
 end
