@@ -22,13 +22,13 @@
 
 .container-data {
   display: flex;
-  background-color: white;
+  background-color: grey;
   height: 70vh;
 }
 
 .container-news {
   background-color: white;
-  width: 70%;
+  //width: 70%;
 }
 
 .container-tweets {
@@ -50,11 +50,11 @@
   width: 100%;
 }
 
-.container-future {
-  background-color: #F0F0F0;
-  width: 30%;
-  min-width: 150px;
-}
+// .container-future {
+//   background-color: #F0F0F0;
+//   width: 30%;
+//   min-width: 150px;
+// }
 
 .container-card {
   display: grid;

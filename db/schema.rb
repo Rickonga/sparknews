@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_155833) do
+ActiveRecord::Schema.define(version: 2020_05_26_094052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,10 +69,20 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.string "ticker"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
+    t.string "currency"
+    t.string "exchange"
+    t.string "industry"
+    t.string "ipo"
+    t.string "logo"
+    t.integer "marketCapitalization"
+    t.integer "shareOutstanding"
+    t.string "company_name"
+    t.string "weburl"
+    t.string "phone"
   end
 
   create_table "strategies", force: :cascade do |t|
@@ -92,6 +102,15 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_watchlist_stocks", force: :cascade do |t|
+    t.bigint "stock_id", null: false
+    t.bigint "user_watchlist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_user_watchlist_stocks_on_stock_id"
+    t.index ["user_watchlist_id"], name: "index_user_watchlist_stocks_on_user_watchlist_id"
   end
 
   create_table "user_watchlists", force: :cascade do |t|
@@ -147,6 +166,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
   add_foreign_key "stock_watchlists", "watchlists"
   add_foreign_key "strategies", "futures"
   add_foreign_key "strategies", "stocks"
+  add_foreign_key "user_watchlist_stocks", "stocks"
+  add_foreign_key "user_watchlist_stocks", "user_watchlists"
   add_foreign_key "user_watchlists", "users"
   add_foreign_key "user_watchlists", "watchlists"
 end
