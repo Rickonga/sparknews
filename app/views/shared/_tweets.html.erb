@@ -2,8 +2,8 @@
 <h1>Tweets of <%= @quotes.first.stock.name %> | <%= @quotes.first.stock.ticker %></h1>
 <!-- create simple form for that allows us to create a new form on the database -->
 
-<%= simple_form_for([@stock, @stockwatchlist]) do |f| %>
-  <%= f.input :watchlist, collection: @user_watchlists %>
+<%= simple_form_for([@stock, @user_watchlist_stock]) do |f| %>
+  <%= f.input :user_watchlist, collection: @user_watchlists %>
   <%= f.submit "create" %>
 <% end %>
 
