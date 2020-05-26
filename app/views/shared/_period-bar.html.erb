@@ -4,7 +4,7 @@
       <%= @quotes.first.time_stamp %> <br>
         <%= @quotes.last.time_stamp %>
       </li>
-    <li><%= link_to "monthly", controller: "stocks", action: "index", resolution: "M" %></li>
+    <li><%= link_to "monthly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "M" %></li>
     <li><%= link_to "weekly", controller: "stocks", action: "index", resolution: "W" %></li>
     <li><%= link_to "daily", controller: "stocks", action: "index", resolution: "D" %></li>
     <li><%= link_to "hourly", controller: "stocks", action: "index", resolution: "60" %></li>
