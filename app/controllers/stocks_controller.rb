@@ -24,10 +24,11 @@ class StocksController < ApplicationController
       @with_flag_posts = []
       @posts.each do |post|
         content = post.text
+        author = post.user.name
         obj_tweet = {}
         found = false
         current_user.saved_tweets.each do |saved_tweet|
-          found = true if saved_tweet.tweet.content == content
+          found = true if saved_tweet.tweet.content == content && saved_tweet.tweet.author == author
         end
         obj_tweet[:user] = post.user
         obj_tweet[:text] = post.text
