@@ -9,8 +9,8 @@
   <li>Start: <%= start_price.round(2) %>$</li>
   <li>End: <%= end_price.round(2) %>$</li>
   <li>Change form low to high: <%= (high - low).round(2) %>$</li>
-  <li>Change from low to high(%): <%= (high / low).round(2) %>%</li>
+  <li>Change from low to high(%): <%= ((high / low) * 100.0 - 100.0).round(2) %>%</li>
   <li>Change over time: <%= (end_price - start_price).round(2) %>$</li>
-  <li>Change over time(%): <%= (end_price / start_price).round(2) %>%</li>
+  <li>Change over time(%): <%= ((end_price / start_price) * 100.0 - 100.0).round(2) %>%</li>
 </ul>
 
