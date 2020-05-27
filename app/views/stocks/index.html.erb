@@ -1,11 +1,11 @@
 <div class="main-container">
   <div class="container-graph">
-    <%= render 'shared/graph' %>
+    <%=  render 'shared/graph' %>
   </div>
   <div id class="period-bar">
      <%= render 'shared/period-bar' %>
   </div>
-  <div class="container-data">
+  <!-- <div class="container-data"> -->
     <div class="container-news">
       <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -21,17 +21,23 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active container-tweets" id="sparkTweets">
           <ul class="list-group media-list media-list-stream">
-            <%= render 'shared/tweets' %>
+            <div class="container-content">
+              <%= render 'shared/tweets' %>
+
           </ul>
         </div>
         <div role="tabpanel" class="tab-pane fade in container-figures" id="sparkFigures">
           <ul class="list-group media-list media-list-stream">
-            <%= render 'shared/figures' %>
+            <div class="container-content">
+              <%= render 'shared/figures' %>
+            </div>
           </ul>
         </div>
         <div role="tabpanel" class="tab-pane fade in container-info" id="sparkInfo">
           <ul class="list-group media-list media-list-stream">
-            <%= render 'shared/info' %>
+            <div class="container-content">
+              <%= render 'shared/info' %>
+            </div>
           </ul>
         </div>
       </div>
@@ -39,5 +45,5 @@
 <!--     <div class="container-future">
       <%#= render 'shared/future' %>
     </div> -->
-  </div>
+<!--   </div> -->
 </div>

@@ -1,5 +1,5 @@
 .list-group-item-primary {
-background: orange;
+background: white;
 color: black;
 font-size: 14px;
 overflow-x: scroll;
@@ -15,16 +15,23 @@ align-items: center;
 }
 .bi-card-checklist {
   font-size: 24px;
+  font-weight: bold !important;
 
 }
 .list-group-item {
   font-size: 12px;
+  font-weight: bold !important;
+  font-family: "Nunito", "Helvetica", "sans-serif" !important;
 
 }
 .scrollbar {
-  height: 200px;
   overflow-y: scroll;
 }
-// .list-group {
-//   width: 220px;
-// }
+
+.btn-group {
+  // margin-top: 80px;
+}
+
+.bi-bookmark {
+  margin-right: 20px;
+}

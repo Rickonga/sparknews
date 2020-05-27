@@ -21,6 +21,21 @@ class StocksController < ApplicationController
       client = set_twitter
       @posts = []
       @posts = client.search("#{@stock.ticker} -rt", lang: "en").first(50)
+      @with_flag_posts = []
+      @posts.each do |post|
+        content = post.text
+        author = post.user.name
+        obj_tweet = {}
+        found = false
+        current_user.saved_tweets.each do |saved_tweet|
+          found = true if saved_tweet.tweet.content == content && saved_tweet.tweet.author == author
+        end
+        obj_tweet[:user] = post.user
+        obj_tweet[:text] = post.text
+        obj_tweet[:created_at] = post.created_at
+        obj_tweet[:bookmarked] = found
+        @with_flag_posts << obj_tweet
+      end
       @watchlist = Watchlist.new
 
       @user_watchlists = current_user.user_watchlists

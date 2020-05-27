@@ -1,8 +1,9 @@
 class SavedTweetsController < ApplicationController
 
   def create
-    @tweet = Tweet.find_by(content: params[:value][2])
-    if @tweet
+    # @tweet = Tweet.find_by(content: params[:value][2])
+    @tweet = Tweet.where("content = ? AND author = ?", params[:value][2], params[:value][0])
+    if !@tweet.empty?
       authorize @tweet
       destroy
     else
@@ -14,15 +15,17 @@ class SavedTweetsController < ApplicationController
       authorize @tweet
       current_user.saved_tweets.create(tweet: @tweet)
     end
+    redirect_to stocks_path
   end
 
   def destroy
-    if params[:id].nil?
-      saved_tweet = @tweet
-    else
+    if params[:id]
       saved_tweet = SavedTweet.find(params[:id]).tweet
+    else
+      saved_tweet = @tweet.first
     end
     authorize saved_tweet
     saved_tweet.destroy
+    redirect_to stocks_path if params[:id]
   end
 end

@@ -7,4 +7,3 @@ require("chart.js")
 
 import "bootstrap";
 
-import "controllers"

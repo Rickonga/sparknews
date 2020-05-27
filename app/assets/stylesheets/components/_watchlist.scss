@@ -1,12 +1,12 @@
 .list-group-item-primary {
-background: orange;
+background: $spark-green;
 color: black;
 font-size: 16px;
 overflow-x: scroll;
 display: flex;
 justify-content: space-around;
 align-items: center;
-width: 200px;
+
 
 
 }
@@ -20,8 +20,65 @@ width: 200px;
 }
 .list-group-item {
   font-size: 12px;
+  background-color: white;
+  color: white !important;
+  color: #32C94F !important;
+  border: 1px solid #32C94F;
+  h4 {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Nunito", "Helvetica", "sans-serif" !important;
+    text-align: -webkit-match-parent;
+    text-decoration: underline;
+
+  }
 }
+
 .scrollbar {
-  height: 200px;
   overflow-y: scroll;
+}
+
+.accordion {
+  li {
+    background-color: white;
+  }
+}
+
+.btn-group {
+  width: 100%;
+  :hover {
+    background-color: #32C94F !important;
+    border-style: none;
+  }
+}
+.btn-secondary {
+  color: white;
+  background-color: #32C94F;
+  border: none !important;
+  font-size: 20px;
+  //font-weight: bold;
+}
+
+
+li[aria-expanded="true"]{
+  background-color: rgba(50, 201, 79,0.22);
+}
+.bi-plus-circle {
+ :hover {
+font-weight: bold;
+  }
+}
+.bi-card-checklist {
+  margin-right: 20px;
+}
+#sub {
+  font-size: 16px;
+}
+.btn-secondary:focus, .btn-secondary:active, .btn-secondary:visited {
+  background-color: #32C94F !important;
+  border: none !important;
+}
+button.btn.btn-secondary.wtch {
+    display: flex;
+    align-items: center;
 }

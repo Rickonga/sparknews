@@ -84,7 +84,49 @@
 .time {
   color: black;
 }
+// ------------ New Twitter Cards ---------------------------------------------------------------------------
 
+.card-green-border{
+  border: 3px solid #32C94F;
+  border-radius: 15px;
+  width: 750px;
+  margin: 16px auto;
+  z-index: 5;
+}
+
+.card-vote-element{
+  list-style-type: none;
+  border-left: 2px solid lightgrey;
+}
+
+.card-header-element{
+  background-color: lightgrey;
+  font-weight: bold;
+  border-top-left-radius: 12px;
+  z-index: 1;
+  h3{
+    color: white;
+  };
+  p{
+    color: white;
+    white-space: nowrap;
+  };
+  span{
+    color: #32C94F;
+  };
+}
+
+.bookmark-icon-green{
+  color: #32C94F;
+}
+
+.size-clock-icon{
+  font-size: 25px;
+}
+
+.text-grey-bottom-border{
+  border-bottom: 2px solid lightgrey;
+}
 // .EmbeddedTweet-tweet {
 //   padding: 2px 2px 1px !IMPORTANT;
 //   background-color: red !important;
