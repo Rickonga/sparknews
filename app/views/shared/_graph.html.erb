@@ -7,6 +7,19 @@
   <% quotes_low << q.low / 100.0 %>
 <% end %>
 
+<% hodie = Time.new %>
+
+<% 4.times do %>
+  <% quotes_low << nil %>
+<% end %>
+
+<% d_counter = 1 %>
+
+<% 4.times do %>
+  <% labels << hodie + 86400 * d_counter %>
+  <% d_counter = d_counter + 1 %>
+<% end %>
+
 
 <canvas id="lineChart" data-time="<%= labels.to_json %>" data-quotes="<%= quotes_low.to_json %>" data-stockname="<%= stock_name.to_json %>" aria-label="Hello ARIA World" role="img"></canvas>
 <%= javascript_pack_tag 'graph' %>
