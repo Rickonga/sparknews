@@ -14,7 +14,7 @@
             <button type="button" class="bookmark-btn" data-toggle="modal" data-target="#exampleModal-<%= tweet.tweet.id %>">
               <%= tweet.tweet.author %>
             </button>
-            <%= link_to saved_tweet_path(tweet), method: :delete do %>
+            <%= link_to saved_tweet_path(tweet, query: params[:query]), method: :delete do %>
               <i class="fas fa-minus-circle delete-icon-green"></i>
             <% end %>
           </li>
