@@ -6,7 +6,6 @@ let chartData = document.getElementById('lineChart');
 let quotes = JSON.parse(chartData.dataset.quotes);
 let stockName = JSON.parse(chartData.dataset.stockname);
 const timeLine = JSON.parse(chartData.dataset.time);
-let quotesAnd
 // let timeStart = null;
 
 const chartCanvas = document.getElementById("lineChart").getContext("2d");
