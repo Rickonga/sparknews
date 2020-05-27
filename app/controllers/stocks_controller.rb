@@ -5,7 +5,7 @@ class StocksController < ApplicationController
 
   def index
     end_time = Time.now.to_i
-    resolution = params[:resolution] || "W"
+    @resolution = params[:resolution] || "W"
     sql_query = "name ILIKE :query OR ticker ILIKE :query"
     @stock = params[:query].nil? ? Stock.find_by(ticker: "AAPL") : Stock.find_by(sql_query, query: "#{params[:query]}%")
     if @stock.nil?
@@ -13,11 +13,11 @@ class StocksController < ApplicationController
       render 'pages/stock_not_found'
     else
       use_company_profile_api(@stock) if @stock.company_name.nil?
-      create_stock_quote_data(@stock, resolution, end_time)
-      last_quote_time_stamp = @stock.quotes.where(resolution: resolution).order("time_stamp DESC").limit(1).first.time_stamp.to_date
+      create_stock_quote_data(@stock, @resolution, end_time)
+      last_quote_time_stamp = @stock.quotes.where(resolution: @resolution).order("time_stamp DESC").limit(1).first.time_stamp.to_date
       resolution_hash = {"M" => 5 * 30 * 12 - 1, "W" => 12 * 30 - 1, "D" => 6 * 30 - 1, "60" => 13, "30" => 6, "15" => 3, "1" => 0}
-      a = (last_quote_time_stamp - resolution_hash[resolution])
-      @quotes = policy_scope(@stock.quotes.where("resolution = ? AND time_stamp > ?", resolution, a))
+      a = (last_quote_time_stamp - resolution_hash[@resolution])
+      @quotes = policy_scope(@stock.quotes.where("resolution = ? AND time_stamp > ?", @resolution, a))
       client = set_twitter
       @posts = []
       @posts = client.search("#{@stock.ticker} -rt", lang: "en").first(50)

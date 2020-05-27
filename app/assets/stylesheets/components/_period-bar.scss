@@ -1,19 +1,53 @@
-#timebar-flex-container {
+#timebar {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-between;
   background-color: white;
+  padding: 0px 16px;
+  border: 2px solid rgb(231, 231, 231);
 }
 
-.timebar-flex-item {
-  font-weight: bold;
-  border: 1px solid #32C94F;
-  padding: 8px;
+#time-indications {
+  display: flex;
+  align-items: center;
+}
+
+
+#dates-display {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+#clickable-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.d {
+
+}
+
+.t-option {
+  // flex: 0 0 15%;
+  border: 2px solid rgb(231, 231, 231);
+  border-radius: 2px;
+  padding: 7px;
   &:hover {
     border: 2px solid #32C94F;
-    background-color: rgba(50, 201, 79, 0.22);
     padding: 7px;
   }
   a:link {
     text-decoration: none;
+    color: #32C94F;
+    padding: 7px;
   }
+}
+
+.resolution-active {
+  border: 2px solid #32C94F;
+  background-color: rgba(50, 201, 79, 0.28);
+  // padding: 8px 24px;
 }
