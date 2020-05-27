@@ -1,18 +1,11 @@
 .list-group-item-primary {
-background: $spark-green;
-color: black;
-font-size: 16px;
-overflow-x: scroll;
-display: flex;
-justify-content: space-around;
-align-items: center;
-
-
-
+  background: $spark-green;
+  color: black;
+  font-size: 16px;
+  overflow-x: scroll;
 }
 #sub {
-  font-size: 20px;
-  margin-left: 10px;
+  font-size: 16px;
 }
 .bi-card-checklist {
   font-size: 24px;
@@ -71,9 +64,7 @@ font-weight: bold;
 .bi-card-checklist {
   margin-right: 20px;
 }
-#sub {
-  font-size: 16px;
-}
+
 .btn-secondary:focus, .btn-secondary:active, .btn-secondary:visited {
   background-color: #32C94F !important;
   border: none !important;

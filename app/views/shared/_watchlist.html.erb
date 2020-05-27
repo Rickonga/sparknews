@@ -30,7 +30,7 @@
       <div class="modal-body border-bottom">
         <p>Add <%= @quotes.first.stock.name %> to a current watchlist:</p>
         <%= simple_form_for([@stock, @user_watchlist_stock]) do |f| %>
-          <%= f.input :user_watchlist, collection: @user_watchlists %>
+          <%= f.input :user_watchlist, collection: @watchlists %>
           <%= f.submit "Add to watchlist", class: "btn btn-secondary" %>
         <% end %>
       </div>
@@ -46,17 +46,26 @@
     </div>
   </div>
 </div>
+
 <div id="accordion">
   <% user_watchlists.each do |uw| %>
     <ul class="list-group">
       <li class="list-group-item list-group-item-primary "data-toggle="collapse" href="#a<%= uw.watchlist.id %>" role="button" aria-expanded="false" aria-controls="multicollapse">
-        <span id="sub"><%= uw.watchlist.name %> </span>
+        <div class="d-flex align-items-center justify-content-between text-left">
+          <span id="sub"><%= uw.watchlist.name %></span>
+          <%= link_to user_watchlist_path(uw, query: params[:query]), method: :delete do %>
+            <i class="fas fa-minus-circle delete-icon-green"></i>
+          <% end %>
+        </div>
       </li>
       <div class="scrollbar scrollbar-primary collapse multi-collapse" id="a<%= uw.watchlist.id %>">
         <div class="force-overflow">
           <% uw.user_watchlist_stocks.each do |uws| %>
-            <li class="list-group-item">
+            <li class="list-group-item d-flex align-items-center justify-content-between">
               <%= link_to uws.stock.name, stocks_path(query: uws.stock.ticker) %>
+              <%= link_to user_watchlist_stock_path(uws, query: params[:query]), method: :delete do %>
+                <i class="fas fa-minus-circle delete-icon-green"></i>
+              <% end %>
             </li>
           <% end %>
         </div>

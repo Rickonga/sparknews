@@ -1,0 +1,53 @@
+<aside class="sidebar">
+  <div class="spark-logo mb-4 btn-sidebar">
+    <%= link_to root_path, class: "d-flex w-100 justify-content-center align-items-center" do %>
+      <%= image_tag "logo.png", width: 40, height: 40, class: "mx-2 margin-bottom: 0.0rem" %>
+      <h1 class="mx-2">SparkNews</h1>
+    <% end %>
+  </div>
+  <div class = "sidebar-height">
+    <div class = "login text-left ml-4" >
+      <% if !user_signed_in? %>
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="d-flex w-100 my-4 justify-content-center align-items-center">
+        <div class="nav-item dropdown">
+          <div class="position-relative">
+            <%= image_tag "user_music.png" , width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar-sidebar dropdown-toggle ", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+            <i class="fas fa-sign-out-alt position-absolute log-out"></i>
+          </div>
+        </div>
+      </div>
+      <div class="btn-sidebar d-flex w-100 my-1 flex-column align-items-center justify-content-center">
+        <%#= link_to "Watchlist stocks", "#" %>
+      </div>
+    <% end %>
+    <div class="" id="search">
+      <%= simple_form_for :search, url: stocks_path, method: :get do |f| %>
+        <div class="ml-4 form-group d-flex">
+          <input class="ml-1 form-control string required flex-grow" type="text" name="query" id="search_query" placeholder="Search for a company/stock" />
+          <button name="button" type="submit" class="btn sidebar-searchbar-btn-flat">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="d-flex w-100 flex-column align-items-center justify-content-center mt-5">
+    <div class="footer-sidebar">
+      <h3>Contact us</h3>
+      <ul class= "list-inline">
+        <li class="list-inline-item"><i class="fab fa-instagram"></i></li>
+        <li class="list-inline-item"><i class="fab fa-facebook-square"></i></li>
+        <li class="list-inline-item"><i class="fas fa-envelope"></i></li>
+        <li class="list-inline-item"><i class="fas fa-phone-square"></i></li>
+      </ul>
+    </div>
+  </div>
+</aside>
