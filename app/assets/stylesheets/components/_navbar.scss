@@ -27,11 +27,13 @@
 }
 
 #custom-navbar {
+  background-color: white;
   h1 {
     margin-bottom: 0.0rem;
-    color: orange;
+    color: #32C94F;
+    font-size: 32px;
+    font-weight: bold;
     &:hover{
-      color: grey;
     }
   }
   a {
@@ -40,5 +42,5 @@
 }
 
 .navbar-white {
-  background: rgba(200,200,200,1) !important;
+  background: rgba(200,200,200,0) !important;
 }
