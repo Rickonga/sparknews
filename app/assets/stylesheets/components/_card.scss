@@ -86,30 +86,29 @@
 }
 // ------------ New Twitter Cards ---------------------------------------------------------------------------
 
-.card-green-border{
-  border: 3px solid #32C94F;
+.card-grey-border{
+  border: 1.5px solid #E9e9e9;
   border-radius: 15px;
-  width: 750px;
-  margin: 16px auto;
-  z-index: 5;
+  max-width: 750px;
+  margin: 0px auto;
+  box-shadow: 5px 5px 10px rgba(50,50,50,0.1);
+  background-color: white;
 }
 
-.card-vote-element{
-  list-style-type: none;
-  border-left: 2px solid lightgrey;
-}
 
 .card-header-element{
-  background-color: lightgrey;
-  font-weight: bold;
-  border-top-left-radius: 12px;
-  z-index: 1;
+  background-color: #E2E2E2;
+  border-top-left-radius: 13.6px;
+  border-top-right-radius: 13.6px;
   h3{
     color: white;
+    font-size: 25px;
+    font-weight: 900;
   };
   p{
     color: white;
     white-space: nowrap;
+    font-weight: 600;
   };
   span{
     color: #32C94F;
@@ -125,8 +124,21 @@
 }
 
 .text-grey-bottom-border{
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 2px solid $light-gray;
 }
+
+.transparent-background{
+  background-color: transparent;
+  border: none;
+}
+
+.card-close-button{
+  position: relative;
+  top: -15px;
+  right: -10px;
+  font-size: 2rem;
+}
+
 // .EmbeddedTweet-tweet {
 //   padding: 2px 2px 1px !IMPORTANT;
 //   background-color: red !important;

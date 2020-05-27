@@ -1,22 +1,21 @@
-<div class="btn-group" role="group" aria-label="Basic example">
+<div class="btn-group" role="group" aria-label="Basic example" data-toggle="collapse" href="#multicollapse-2" role="button" aria-expanded="false" aria-controls="multicollapse">
   <button type="button" class="btn btn-secondary wtch"><svg class="bi bi-bookmark" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
-</svg>Bookmarks</button>
+    </svg>Bookmarks</button>
   <button type="button" class="btn btn-secondary"></button>
 </div>
 
 <div id="accordion">
 <ul class="list-group">
-    <li class="list-group-item list-group-item-primary "data-toggle="collapse" href="#multicollapse-2" role="button" aria-expanded="false" aria-controls="multicollapse">
-        <span id ="sub" >Gold Silver</span>
-    </li>
     <div class="scrollbar scrollbar-primary collapse multi-collapse" id="multicollapse-2">
       <div class="force-overflow">
         <% @saved_tweets.each do |tweet| %>
-          <li class="list-group-item">
-            <%= tweet.tweet.author %>
+          <li class="list-group-item d-flex align-items-center justify-content-between">
+            <button type="button" class="bookmark-btn" data-toggle="modal" data-target="#exampleModal-<%= tweet.tweet.id %>">
+              <%= tweet.tweet.author %>
+            </button>
             <%= link_to saved_tweet_path(tweet), method: :delete do %>
-              <i class="fas fa-minus-circle"></i>
+              <i class="fas fa-minus-circle delete-icon-green"></i>
             <% end %>
           </li>
         <% end %>
@@ -25,44 +24,40 @@
   </ul>
 </div>
 
-<!-- <div id="accordion"> -->
-<!-- <ul class="list-group mt-4">
-    <li class="list-group-item list-group-item-primary">
-      <svg class="bi bi-bookmark" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
-      </svg>
-        <span id ="sub" data-toggle="collapse" href="#multicollapse-22" role="button" aria-expanded="false" aria-controls="multicollapse-22">Bookmarks</span>
-    </li>
-    <div class="scrollbar scrollbar-primary collapse multi-collapse" id="multicollapse-22">
-      <div class="force-overflow">
-        <% @saved_tweets.each do |tweet| %>
-          <li class="list-group-item">
-            <%= tweet.tweet.author %>
-            <%= link_to saved_tweet_path(tweet), method: :delete do %>
-              <i class="fas fa-minus-circle"></i>
-            <% end %>
-          </li>
-        <% end %>
-      </div>
-    </div>
-  </ul>
-</div> -->
+<!-- Modal -->
 
-<!-- <p>
-</p>
-<div class="row">
-  <div class="col">
-    <div class="collapse multi-collapse" id="multicollapse-22">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+
+<!-- Modal -->
+<% @saved_tweets.each do |tweet| %>
+  <div class="modal fade" id="exampleModal-<%= tweet.tweet.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content transparent-background">
+
+          <!-- Twitter-card -->
+          <div class="d-flex card-grey-border">
+            <div class="flex-grow-1">
+              <div class="d-flex pl-4 py-2 card-header-element">
+                <img src="<%= tweet.tweet.avatar %>" width="100%" class="avatar-large" alt="avatar-large">
+                <div class="d-flex align-items-center flex-grow-1"><h3 class="mb-0 mx-3"><%= tweet.tweet.author %></h3></div>
+                <div class="d-flex align-items-center mr-4"><p class="mb-0">
+                  <span><%= number_to_human( tweet.tweet.follower, :format => '%n%u', :precision => 2, :units => { :thousand => 'K', :million => 'M', :billion => 'B' }) %></span> followers</p>
+                    <button type="button" class="close card-close-button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+              </div>
+              <div class="pl-4 d-flex">
+                <p class="flex-grow-1 pt-4 pb-3 m-0 text-grey-bottom-border text-left"><%= tweet.tweet.content %></p>
+                <i class="fas fa-bookmark m-3 ml-5 bookmark-icon-green" style="font-size: 35px"></i>
+              </div>
+              <div class="d-flex pl-4 pb-2 pt-2">
+                <i class="far fa-clock mr-3 size-clock-icon"></i>
+                <p class="m-0 p-0">Created <%= time_ago_in_words(tweet.tweet.publish) %> ago</p>
+              </div>
+            </div>
+          </div>
+
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapse-2Example2">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
-  </div>
-</div> -->
+<% end %>

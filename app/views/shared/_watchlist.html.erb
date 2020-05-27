@@ -61,7 +61,7 @@
         <div class="force-overflow">
           <% uw.user_watchlist_stocks.each do |uws| %>
             <li class="list-group-item">
-              <%= uws.stock.name %>
+              <%= link_to uws.stock.name, stocks_path(query: uws.stock.ticker) %>
             </li>
           <% end %>
         </div>
