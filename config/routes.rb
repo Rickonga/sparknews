@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :user_watchlist_stocks, only: %i[create]
   end
   resources :watchlists, only: %i[create]
+  resources :user_watchlist_stocks, only: [:destroy]
+  resources :user_watchlists, only: [:destroy]
 
   resources :saved_tweets, only: [:index, :create, :destroy]
 end

@@ -9,4 +9,11 @@ class UserWatchlistStocksController < ApplicationController
     @user_watchlist_stock.save
     redirect_to stocks_path
   end
+
+  def destroy
+    user_watchlist_stock = UserWatchlistStock.find(params[:id])
+    authorize user_watchlist_stock
+    user_watchlist_stock.destroy
+    redirect_to stocks_path(query: params[:query])
+  end
 end
