@@ -12,7 +12,7 @@
 .tweet-container {
   display: flex;
   margin: 15px;
-  border-radius: 5px;
+  border-radius: 4.6px;
 }
 
 // .product-wrap {
@@ -87,19 +87,19 @@
 // ------------ New Twitter Cards ---------------------------------------------------------------------------
 
 .card-grey-border{
-  border: 1.5px solid #E9e9e9;
-  border-radius: 15px;
+  //border: 1.5px solid #E9e9e9;
+  border-radius: 4.6px;
   max-width: 750px;
   margin: 0px auto;
-  box-shadow: 5px 5px 10px rgba(50,50,50,0.1);
+  box-shadow: 5px 5px 10px rgba(50,50,50,0.1), -5px 0px 10px rgba(50,50,50,0.1);
   background-color: white;
 }
 
 
 .card-header-element{
-  background-color: #E2E2E2;
-  border-top-left-radius: 13.6px;
-  border-top-right-radius: 13.6px;
+  background-color: #4c4c4c;
+  border-top-left-radius: 4.6px;
+  border-top-right-radius: 4.6px;
   h3{
     color: white;
     font-size: 25px;

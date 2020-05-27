@@ -4,8 +4,9 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: white;
-  padding: 0px 16px;
-  border: 2px solid rgb(231, 231, 231);
+  padding: 16px;
+  box-shadow: 5px 5px 10px rgba(50,50,50,0.1), -5px 0px 10px rgba(50,50,50,0.1);
+
 }
 
 #time-indications {
@@ -32,8 +33,12 @@
 
 .t-option {
   // flex: 0 0 15%;
-  border: 2px solid rgb(231, 231, 231);
+  border: 1px solid rgb(231, 231, 231);
   border-radius: 2px;
+  border-right: none;
+  &:last-child {
+    border-right: 1px solid rgb(231, 231, 231);
+  }
   padding: 7px;
   &:hover {
     border: 2px solid #32C94F;

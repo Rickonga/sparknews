@@ -19,7 +19,6 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
-            <i class="fas fa-sign-out-alt position-absolute log-out"></i>
           </div>
         </div>
       </div>
@@ -30,7 +29,7 @@
     <div class="" id="search">
       <%= simple_form_for :search, url: stocks_path, method: :get do |f| %>
         <div class="ml-4 form-group d-flex">
-          <input class="ml-1 form-control string required flex-grow" type="text" name="query" id="search_query" placeholder="Search for a city/model" />
+          <input class="ml-1 form-control string required flex-grow" type="text" name="query" id="search_query" placeholder="Enter a ticker (AAPL)" />
           <button name="button" type="submit" class="btn sidebar-searchbar-btn-flat">
             <i class="fas fa-search"></i>
           </button>
