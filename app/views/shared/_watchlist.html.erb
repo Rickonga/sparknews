@@ -30,7 +30,7 @@
       <div class="modal-body border-bottom">
         <p>Add <%= @quotes.first.stock.name %> to a current watchlist:</p>
         <%= simple_form_for([@stock, @user_watchlist_stock]) do |f| %>
-          <%= f.input :user_watchlist, collection: @watchlists %>
+          <%= f.association :user_watchlist, include_blank: false, label_method: lambda{|user_watchlist| "#{user_watchlist.watchlist.name}"} %>
           <%= f.submit "Add to watchlist", class: "btn btn-secondary" %>
         <% end %>
       </div>

@@ -39,7 +39,6 @@ class StocksController < ApplicationController
       @watchlist = Watchlist.new
 
       @user_watchlists = current_user.user_watchlists
-      @watchlists = current_user.watchlists
       @user_watchlist_stock = UserWatchlistStock.new
 
       @saved_tweets = SavedTweet.all
