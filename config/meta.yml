@@ -1,0 +1,5 @@
+meta_product_name: "SparkNews"
+meta_title: "SparkNews - Beat the stock market with real time stock tweets"
+meta_description: "Save time and Invest better. See stock movements and get all the relevant stock tweets in a clear timeline."
+meta_image: "banner.jpg" # should exist in `app/assets/images/`
+twitter_account: "@SparkNewsStocks"   # required for Twitter Cards

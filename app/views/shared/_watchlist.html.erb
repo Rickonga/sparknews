@@ -31,22 +31,17 @@
         <p>Add <%= @quotes.first.stock.name %> to a current watchlist:</p>
         <%= simple_form_for([@stock, @user_watchlist_stock]) do |f| %>
           <%= f.input :user_watchlist, collection: @user_watchlists %>
-          <%= f.submit "Add to watchlist" %>
+          <%= f.submit "Add to watchlist", class: "btn btn-secondary" %>
         <% end %>
       </div>
-      <!-- <br></br> -->
       <div class="modal-body">
-        <p>or reate a new watchlist:</p>
+        <p>or create a new watchlist:</p>
         <% if user_signed_in? %>
           <%= simple_form_for @watchlist do |w| %>
             <%= w.input :name %>
-            <%= w.submit "Create watchlist" %>
+            <%= w.submit "Create watchlist", class: "btn btn-primary" %>
           <% end %>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
