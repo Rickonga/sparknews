@@ -1,0 +1,19 @@
+#timebar-flex-container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.timebar-flex-item {
+  font-weight: bold;
+  border: 1px solid #32C94F;
+  padding: 8px;
+  &:hover {
+    border: 2px solid #32C94F;
+    background-color: rgba(50, 201, 79, 0.22);
+    padding: 7px;
+  }
+  a:link {
+    text-decoration: none;
+  }
+}

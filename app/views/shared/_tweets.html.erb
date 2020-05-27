@@ -1,45 +1,50 @@
 
 <h1>Tweets of <%= @quotes.first.stock.name %> | <%= @quotes.first.stock.ticker %></h1>
-<% @posts.each do |post| %>
-  <div class="tweet-container">
-    <div class="tweet-content">
-      <p><b>Text: </b><%= post.text %></p>
-      <p><b>#Retweets: </b><%= post.retweet_count %></p>
-      <p><b>#Favourite: </b><%= post.favorite_count %></p>
-      <p><b>Username: </b><%= post.user.name %></p>
-      <p><b>Screenname: </b><%= post.user.screen_name %></p>
-      <p><b>#Followers: </b><%= post.user.followers_count %></p>
-      <p><b>Image: </b><img src="<%= post.user.profile_background_image_url %>" width="100%"></p>
+<!-- create simple form for that allows us to create a new form on the database -->
+
+
+<% @with_flag_posts.each do |post| %>
+
+
+  <div class="d-flex card-green-border">
+    <div class="flex-grow-1">
+      <div class="d-flex pl-4 py-2 card-header-element">
+        <img src="<%= post[:user].profile_image_url_https %>" width="100%" class="avatar-large" alt="avatar-large">
+        <div class="d-flex align-items-center flex-grow-1"><h3 class="mb-0 mx-3"><%= post[:user].name %></h3></div>
+        <div class="d-flex align-items-center mr-4"><p class="mb-0"><span><%= number_to_human( post[:user].followers_count, :format => '%n%u', :precision => 2, :units => { :thousand => 'K', :million => 'M', :billion => 'B' }) %></span> followers</p></div>
+      </div>
+      <div class="pl-4 d-flex">
+        <p class="flex-grow-1 pt-4 pb-3 m-0 text-grey-bottom-border"><%= post[:text] %></p>
+        <% tweet = [post[:user].name, post[:user].followers_count, post[:text], post[:created_at], post[:user].profile_image_url_https] %>
+          <%= link_to saved_tweets_path(value: tweet), method: :post do %>
+            <% if post[:bookmarked] %>
+              <i class="fas fa-bookmark m-3 ml-5 bookmark-icon-green" style="font-size: 35px"></i>
+            <% else %>
+              <i class="far fa-bookmark m-3 ml-5 bookmark-icon-green" style="font-size: 35px"></i>
+            <% end %>
+          <% end %>
+      </div>
+      <div class="d-flex pl-4 pb-2 pt-2">
+        <i class="far fa-clock mr-3 size-clock-icon"></i>
+        <p class="m-0">Created <%= time_ago_in_words(post[:created_at]) %> ago</p>
+      </div>
     </div>
-    <div class="side-rating">
-      <svg class="bi bi-bookmark-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M4.5 2a.5.5 0 00-.5.5v11.066l4-2.667 4 2.667V8.5a.5.5 0 011 0v6.934l-5-3.333-5 3.333V2.5A1.5 1.5 0 014.5 1h4a.5.5 0 010 1h-4zm9-1a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-2a.5.5 0 010-1H13V1.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M13 3.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
-      </svg>
-      <svg class="bi bi-caret-up-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
-      </svg>
-      <p>68</p>
-      <svg class="bi bi-caret-down-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"/>
-      </svg>
-      <svg class="bi bi-clock" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm8-7A8 8 0 110 8a8 8 0 0116 0z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M7.5 3a.5.5 0 01.5.5v5.21l3.248 1.856a.5.5 0 01-.496.868l-3.5-2A.5.5 0 017 9V3.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
-      </svg>
-      <p><i>Created <%= time = (Time.now - post.created_at).round(2) %> seconds ago.</i></p>
+    <div class="pt-2 pb-2 px-4 card-vote-element d-flex align-items-center">
+      <ul class="list-unstyled">
+       <li>
+          <svg class="bi bi-caret-up-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 00.753-1.659l-4.796-5.48a1 1 0 00-1.506 0z"/>
+          </svg>
+        <li>
+          <p class="m-0 text-center">68</p>
+        </li>
+        <li>
+          <svg class="bi bi-caret-down-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z"/>
+          </svg>
+        </li>
+      </ul>
     </div>
   </div>
 <% end %>
-<figure class="op-social">
-<iframe>
-<blockquote class="twitter-tweet">
-<p lang="en" dir="ltr">Mama knows best! Mother bear teaches cub how to dig for clams <a href="https://twitter.com/LakeClarkNPS">@LakeClarkNPS</a> by Sally Jewell <a href="https://twitter.com/hashtag/Alaska?src=hash">#Alaska</a> <a href="https://twitter.com/hashtag/nature?src=hash">#nature</a> <a href="http://t.co/1n3vYDJcAW">pic.twitter.com/1n3vYDJcAW</a></p>
-— US Dept of Interior (@Interior) <a href="https://twitter.com/Interior/status/611193269532295168">June 17, 2015</a>
-</blockquote>
-<script async
-  src="https://platform.twitter.com/widgets.js">
-</script>
-</iframe>
-<figure>
 

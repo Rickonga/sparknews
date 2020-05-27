@@ -1,0 +1,11 @@
+<div id="timebar-flex-container">
+  <div><%#= @quotes.first.time_stamp %> <br>
+        <%#= @quotes.last.time_stamp %></div>
+  <div class="timebar-flex-item" id="merde"><%= link_to "M", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "M" %></div>
+  <div class="timebar-flex-item"><%= link_to "weekly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "W" %></div>
+  <div class="timebar-flex-item"><%= link_to "daily", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "D" %></div>
+  <div class="timebar-flex-item"><%= link_to "hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "60" %></div>
+  <div class="timebar-flex-item"><%= link_to "half-hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "30" %></div>
+  <div class="timebar-flex-item"><%= link_to "quarter-hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "15" %></div>
+  <div class="timebar-flex-item"><%= link_to "minute", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "1" %></div>
+</div>

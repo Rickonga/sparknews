@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_155833) do
+ActiveRecord::Schema.define(version: 2020_05_27_074440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,10 +69,20 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.string "ticker"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
+    t.string "currency"
+    t.string "exchange"
+    t.string "industry"
+    t.string "ipo"
+    t.string "logo"
+    t.integer "marketCapitalization"
+    t.integer "shareOutstanding"
+    t.string "company_name"
+    t.string "weburl"
+    t.string "phone"
   end
 
   create_table "strategies", force: :cascade do |t|
@@ -88,10 +98,20 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
   create_table "tweets", force: :cascade do |t|
     t.text "content"
     t.string "author"
-    t.date "publish"
-    t.string "url"
+    t.datetime "publish"
+    t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "follower"
+  end
+
+  create_table "user_watchlist_stocks", force: :cascade do |t|
+    t.bigint "stock_id", null: false
+    t.bigint "user_watchlist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_user_watchlist_stocks_on_stock_id"
+    t.index ["user_watchlist_id"], name: "index_user_watchlist_stocks_on_user_watchlist_id"
   end
 
   create_table "user_watchlists", force: :cascade do |t|
@@ -104,7 +124,6 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -112,6 +131,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -147,6 +167,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_155833) do
   add_foreign_key "stock_watchlists", "watchlists"
   add_foreign_key "strategies", "futures"
   add_foreign_key "strategies", "stocks"
+  add_foreign_key "user_watchlist_stocks", "stocks"
+  add_foreign_key "user_watchlist_stocks", "user_watchlists"
   add_foreign_key "user_watchlists", "users"
   add_foreign_key "user_watchlists", "watchlists"
 end
