@@ -1,6 +1,8 @@
-<%= render 'shared/sidebar' %>
-<div class="mt-5 text-center">
-  <h1>No results for <%= params[:query] %></h1>
-  <%= render 'pages/searchbar' %>
-</div>
+<%= render 'pages/page_not_found_sidebar' %>
+<h1 class="text-center" style="margin: 30vh auto; color: rgba(30,30,30,0.7);">
+  No results for <%= params[:query] %>
+  <br>
+  <i class="fas fa-search mt-5" style="font-size: 150px; opacity: 0.5"></i>
+</h1>
+
 
