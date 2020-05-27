@@ -20,7 +20,7 @@ class StocksController < ApplicationController
       @quotes = policy_scope(@stock.quotes.where("resolution = ? AND time_stamp > ?", resolution, a))
       client = set_twitter
       @posts = []
-      @posts = client.search("#{@stock.ticker} -rt", lang: "en").first(50)
+      @posts = client.search("$#{@stock.ticker} -rt", lang: "en").first(50)
       @with_flag_posts = []
       @posts.each do |post|
         content = post.text
