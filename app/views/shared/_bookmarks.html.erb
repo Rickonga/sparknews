@@ -12,15 +12,14 @@
     </li>
     <div class="scrollbar scrollbar-primary collapse multi-collapse" id="multicollapse-2">
       <div class="force-overflow">
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        <% @saved_tweets.each do |tweet| %>
+          <li class="list-group-item">
+            <%= tweet.tweet.author %>
+            <%= link_to saved_tweet_path(tweet), method: :delete do %>
+              <i class="fas fa-minus-circle"></i>
+            <% end %>
+          </li>
+        <% end %>
       </div>
     </div>
   </ul>
