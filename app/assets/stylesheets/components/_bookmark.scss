@@ -35,3 +35,20 @@ align-items: center;
 .bi-bookmark {
   margin-right: 20px;
 }
+
+.delete-icon-green{
+  color: #32C94F;
+}
+
+.bookmark-btn{
+  border: none;
+  background-color: transparent;
+  color: #616161;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0;
+  &:focus{
+    border: none;
+    outline: none;
+  }
+}
