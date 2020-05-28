@@ -1,9 +1,10 @@
 .home-banner {
-  background-image: asset-url('banner3.jpg');
+
+  background-image: linear-gradient(rgba(255,255,255,0.1),rgba(255,255,255,0.1)), asset-url('banner3.jpg');
   background-size: cover;
-  height: 70vh;
+  height: 78vh;
   color: #eee;
   text-align: center;
-  padding-top: 20vh;
+  padding-top: 30vh;
   background-position: bottom;
 }

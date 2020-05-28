@@ -27,17 +27,24 @@
 }
 
 #custom-navbar {
-  background-color: white;
+  // background-color: rgba(100,100,100,0.5);
   h1 {
     margin-bottom: 0.0rem;
     color: #32C94F;
     font-size: 32px;
     font-weight: bold;
+    opacity: none;
+    z-index: 5;
     &:hover{
     }
   }
   a {
+    // background-color: white;
     text-decoration: none;
+    border-radius: 0;
+    margin: 5px;
+    padding: 5px;
+    color: white;
   }
 }
 

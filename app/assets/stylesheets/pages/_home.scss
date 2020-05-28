@@ -18,13 +18,17 @@
   text-align: center;
   background-color: rgba(50, 201, 79, 0.22);
   color: #32C94F;
+  i {
+    font-size: 12vh;
+  }
 }
 
 .landing-page-card {
-  width: 35vh;
+  width: 32vh;
   margin-bottom: 5vh;
   border: 2px solid rgba(50, 201, 79, 0.22);
   border-radius: 8px;
+  margin-left: 5px;
 }
 
 .landing-page-text {
@@ -48,16 +52,17 @@
 .footer {
   padding: 7vh 10vw;
   text-align: center;
-  background-color: $font-color;
+  background-color: white;
+  margin-bottom: 30px;
   h3 {
-    font-size: 50px;
+    font-size: 32px;
     font-weight: bold;
     color: rgba(30, 30, 30, 0.7);
   };
   ul {
     li{
-      font-size: 50px;
-      margin: 2vh;
+      font-size: 25px;
+      margin: 0vh;
       color: rgba(30, 30, 30, 0.7);
 
     }
@@ -65,12 +70,12 @@
 }
 
 .subheader {
-  font-size: 70px;
+  font-size: 5vh;
   font-weight: bold;
   text-align: center;
   margin-top: 100px;
   margin-bottom: 50px;
-  color: rgbargba(30, 30, 30, 0.7) !important;
+  color: rgba(30, 30, 30, 0.7) !important;
 }
 
 #part2 {
