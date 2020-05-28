@@ -20,7 +20,7 @@ class StocksController < ApplicationController
       @quotes = policy_scope(@stock.quotes.where("resolution = ? AND time_stamp > ?", @resolution, a))
       client = set_twitter
       @posts = []
-      @posts = client.search("$#{@stock.ticker} -rt", lang: "en").first(50)
+      @posts = client.search("$#{@stock.ticker} -rt", lang: "en").first(200)
       @with_flag_posts = []
       @posts.each do |post|
         content = post.text
@@ -34,8 +34,11 @@ class StocksController < ApplicationController
         obj_tweet[:text] = post.text
         obj_tweet[:created_at] = post.created_at
         obj_tweet[:bookmarked] = found
-        @with_flag_posts << obj_tweet
+        if post.user.followers_count > 5000
+          @with_flag_posts << obj_tweet
+        end
       end
+      @with_flag_posts = @with_flag_posts.first(50)
       @watchlist = Watchlist.new
 
       @user_watchlists = current_user.user_watchlists
