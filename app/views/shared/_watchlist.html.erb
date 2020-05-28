@@ -62,7 +62,10 @@
         <div class="force-overflow">
           <% uw.user_watchlist_stocks.each do |uws| %>
             <li class="list-group-item d-flex align-items-center justify-content-between">
-              <%= link_to uws.stock.name, stocks_path(query: uws.stock.ticker) %>
+              <div>
+                <i class="fas fa-chart-line pr-1"></i>
+                <%= link_to uws.stock.name, stocks_path(query: uws.stock.ticker) %>
+              </div>
               <%= link_to user_watchlist_stock_path(uws, query: params[:query]), method: :delete do %>
                 <i class="fas fa-minus-circle delete-icon-green"></i>
               <% end %>
