@@ -35,7 +35,7 @@ let lineChart = new Chart(chartCanvas, {
     },
     options: {
       tooltips: {
-        backgroundColor: "rgba(50, 201, 79, 0.80)",
+        backgroundColor: "rgba(50, 201, 79, 0.80)"
       },
             scales: {
               xAxes: [{
@@ -45,7 +45,10 @@ let lineChart = new Chart(chartCanvas, {
               }],
               yAxes: [{
                 ticks: {
-                  beginAtZero: false
+                  beginAtZero: false,
+                  callback: function(value, index, values) {
+                    return '$ ' + value;
+                  }
                 }
               }]
             },

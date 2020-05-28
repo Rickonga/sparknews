@@ -1,18 +1,48 @@
-<h1>Info tab</h1>
 <% if !@quotes.first.stock.country.nil? %>
   <h2><%= link_to @quotes.first.stock.name, @quotes.first.stock.weburl, target: :_blank %></a></h2>
   <%= image_tag @quotes.first.stock.logo if !@quotes.first.stock.logo.nil? %>
-  <ul>
-    <li>Company name: <%= @quotes.first.stock.company_name %></li>
-    <li>Country: <%= @quotes.first.stock.country %></li>
-    <li>Industry: <%= @quotes.first.stock.industry %></li>
-    <li>Currency: <%= @quotes.first.stock.currency %></li>
-    <li>Exchange: <%= @quotes.first.stock.exchange %></li>
-    <li>IPO: <%= @quotes.first.stock.ipo %></li>
-    <li>Market Capitalization: <%=  @quotes.first.stock.marketCapitalization %>$</li>
-    <li>Share Outstanding: <%= @quotes.first.stock.shareOutstanding %></li>
-    <li>Phone: <%= @quotes.first.stock.phone %></li>
-  </ul>
+
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th scope="row">Company name</th>
+        <td><%= @quotes.first.stock.company_name %></td>
+      </tr>
+      <tr>
+        <th scope="row">Country</th>
+        <td><%= @quotes.first.stock.country %></td>
+      </tr>
+      <tr>
+        <th scope="row">Industry</th>
+        <td><%= @quotes.first.stock.industry %></td>
+      </tr>
+      <tr>
+        <th scope="row">Currency</th>
+        <td><%= @quotes.first.stock.currency %></td>
+      </tr>
+      <tr>
+        <th scope="row">Exchange</th>
+        <td><%= @quotes.first.stock.exchange %></td>
+      </tr>
+      <tr>
+        <th scope="row">IPO</th>
+        <td><%= @quotes.first.stock.ipo %></td>
+      </tr>
+      <tr>
+        <th scope="row">Market Capitalization</th>
+        <td><%=  @quotes.first.stock.marketCapitalization %> $</td>
+      </tr>
+      <tr>
+        <th scope="row">Share Outstanding</th>
+        <td><%= @quotes.first.stock.shareOutstanding %></td>
+      </tr>
+      <tr>
+        <th scope="row">Phone</th>
+        <td><%= @quotes.first.stock.phone %></td>
+      </tr>
+    </tbody>
+  </table>
+
 <% else %>
   <h2>We're sorry but there are no infos available at the moment</h2>
 <% end %>
