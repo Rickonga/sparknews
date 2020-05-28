@@ -1,18 +1,18 @@
 <% coucou = Time.new %>
-<% start = @quotes.first.time_stamp.to_s %>
-<% chart_end = @quotes.last.time_stamp.to_s %>
+<% start = @quotes.first.time_stamp %>
+<% chart_end = @quotes.last.time_stamp %>
 
 
 <div id="timebar">
 
   <div id="time-indications">
     <div>
-      Selected period
+      Selected period:
     </div>
 
     <div id="dates-display">
-      <div class="d">from <%= start[0, 16] %></div>
-      <div class="d">to <%= chart_end[0, 16]%></div>
+          <div class="d">from <%= start.strftime("%e %b %Y %H:%M%p") %></div>
+      <div class="d">to <%= chart_end.strftime("%e %b %Y %H:%M%p") %></div>
     </div>
   </div>
 
@@ -46,17 +46,17 @@
 <div id="timebar-flex-container">
 
   <div id="timeframe-hint">
-    <div>from <%= start[0, 16] %></div>
-    <div> to <%= chart_end[0, 16] %></div>
+    <div>from <%#= start[0, 16] %></div>
+    <div> to <%#= chart_end[0, 16] %></div>
   </div>
 
-  <div class=" <%= @resolution == 'M' ? 'resolution-active' : '' %> t-option"><%= link_to "M", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "M" %></div>
-  <div class=" <%= @resolution == 'W' ? 'resolution-active' : '' %> t-option"><%= link_to "weekly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "W" %></div>
-  <div class=" <%= @resolution == 'D' ? 'resolution-active' : '' %> t-option"><%= link_to "daily", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "D" %></div>
-  <div class=" <%= @resolution == '60' ? 'resolution-active' : '' %> t-option"><%= link_to "hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "60" %></div>
-  <div class=" <%= @resolution == '30' ? 'resolution-active' : '' %> t-option"><%= link_to "half-hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "30" %></div>
-  <div class=" <%= @resolution == '15' ? 'resolution-active' : '' %> t-option"><%= link_to "quarter-hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "15" %></div>
-  <div class=" <%= @resolution == '1' ? 'resolution-active' : '' %> t-option"><%= link_to "minute", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "1" %></div>
+  <div class=" <%#= @resolution == 'M' ? 'resolution-active' : '' %> t-option"><%#= link_to "M", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "M" %></div>
+  <div class=" <%#= @resolution == 'W' ? 'resolution-active' : '' %> t-option"><%#= link_to "weekly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "W" %></div>
+  <div class=" <%#= @resolution == 'D' ? 'resolution-active' : '' %> t-option"><%#= link_to "daily", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "D" %></div>
+  <div class=" <%#= @resolution == '60' ? 'resolution-active' : '' %> t-option"><%#= link_to "hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "60" %></div>
+  <div class=" <%#= @resolution == '30' ? 'resolution-active' : '' %> t-option"><%#= link_to "half-hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "30" %></div>
+  <div class=" <%#= @resolution == '15' ? 'resolution-active' : '' %> t-option"><%#= link_to "quarter-hourly", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "15" %></div>
+  <div class=" <%#= @resolution == '1' ? 'resolution-active' : '' %> t-option"><%#= link_to "minute", controller: "stocks", action: "index", query: @quotes.first.stock.name, resolution: "1" %></div>
 </div>
 
 <div>
