@@ -1,4 +1,3 @@
-
 <div class="btn-group" role="group" aria-label="Basic example">
   <button type="button" class="btn btn-secondary wtch">
     <svg class="bi bi-card-checklist" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -27,9 +26,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <%#= url: stock_user_watchlist_stocks_path(query: params[:query]), method: :post %>
       <div class="modal-body border-bottom">
         <p>Add <%= @quotes.first.stock.name %> to a current watchlist:</p>
-        <%= simple_form_for([@stock, @user_watchlist_stock]) do |f| %>
+        <%= simple_form_for [@stock, @user_watchlist_stock], url: stock_user_watchlist_stocks_path(@stock, query: params[:query]), method: :post do |f| %>
           <%= f.association :user_watchlist, include_blank: false, label_method: lambda{|user_watchlist| "#{user_watchlist.watchlist.name}"} %>
           <%= f.submit "Add to watchlist", class: "btn btn-secondary" %>
         <% end %>
@@ -37,7 +37,7 @@
       <div class="modal-body">
         <p>or create a new watchlist:</p>
         <% if user_signed_in? %>
-          <%= simple_form_for @watchlist do |w| %>
+          <%= simple_form_for @watchlist, url: watchlists_path(query: params[:query]),method: :post do |w| %>
             <%= w.input :name %>
             <%= w.submit "Create watchlist", class: "btn btn-primary" %>
           <% end %>
