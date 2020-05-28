@@ -1,8 +1,9 @@
+<% high_instance = @quotes.order("low DESC").limit(1).first %>
+<% low_instance = @quotes.order("low ASC").limit(1).first %>
 <% high = @quotes.order("low DESC").limit(1).first.low / 100.0 %>
 <% low = @quotes.order("low ASC").limit(1).first.low / 100.0 %>
 <% start_price = @quotes.order("time_stamp ASC").limit(1).first.low / 100.0 %>
 <% end_price =  @quotes.order("time_stamp DESC").limit(1).first.low / 100.0 %>
-
 
 <table class="table table-striped">
   <thead>
@@ -14,31 +15,43 @@
   <tbody>
     <tr>
       <th scope="row">Highest</th>
-      <td><%= high.round(2) %> $</td>
+      <td><%= high.round(2) %>$</td>
     </tr>
     <tr>
       <th scope="row">Lowest</th>
-      <td><%= low.round(2) %> $</td>
+      <td><%= low.round(2) %>$</td>
     </tr>
     <tr>
       <th scope="row">Start</th>
-      <td><%= start_price.round(2) %> $</td>
+      <td><%= start_price.round(2) %>$</td>
     </tr>
     <tr>
       <th scope="row">End</th>
-      <td><%= end_price.round(2) %> $</td>
+      <td><%= end_price.round(2) %>$</td>
     </tr>
-    <tr>
-      <th scope="row">Change form low to high</th>
-      <td><%= (high - low).round(2) %> $</td>
-    </tr>
-    <tr>
-      <th scope="row">Change from low to high (%)</th>
-      <td><%= ((high / low) * 100.0 - 100.0).round(2) %> %</td>
-    </tr>
+
+    <% if low_instance.time_stamp > high_instance.time_stamp %>
+      <tr>
+        <th scope="row">Change from high to low</th>
+        <td><%= (low - high).round(2) %>$</td>
+      </tr>
+      <tr>
+        <th scope="row">Change from high to low (%)</th>
+        <td><%= ((low / high) * 100.0 - 100.0).round(2) %>%</td>
+      </tr>
+    <% else %>
+      <tr>
+        <th scope="row">Change from low to high</th>
+        <td><%= (high - low).round(2) %>$</td>
+      </tr>
+      <tr>
+        <th scope="row">Change from low to high (%)</th>
+        <td><%= ((high / low) * 100.0 - 100.0).round(2) %>%</td>
+      </tr>
+    <% end %>
     <tr>
       <th scope="row">Change over time</th>
-      <td><%= (end_price - start_price).round(2) %> $</td>
+      <td><%= (end_price - start_price).round(2) %>$</td>
     </tr>
     <tr>
       <th scope="row">Change over time (%)</th>

@@ -7,7 +7,7 @@ class UserWatchlistStocksController < ApplicationController
     @user_watchlist_stock.user_watchlist = user_watchlist
     authorize @user_watchlist_stock
     @user_watchlist_stock.save
-    redirect_to stocks_path
+    redirect_to stocks_path(query: params[:query])
   end
 
   def destroy

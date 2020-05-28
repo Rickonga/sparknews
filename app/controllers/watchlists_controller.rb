@@ -14,9 +14,9 @@ class WatchlistsController < ApplicationController
     authorize @watchlist
 
     if @user_watchlist.save
-      redirect_to stocks_path
+      redirect_to stocks_path(query: params[:query])
     else
-      redirect_to stocks_path
+      redirect_to stocks_path(query: params[:query])
     end
   end
 
